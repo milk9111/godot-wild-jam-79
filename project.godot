@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="godot-wild-jam-79"
-run/main_scene="uid://wa1i5183d2r0"
+run/main_scene="uid://cuclpry2ndhpk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+run/stretch/mode="disabled"
+run/size/resizable=true
+run/size/viewport_height=648
+run/size/viewport_width=1152
+run/name="New Game Project"
 
 [display]
 

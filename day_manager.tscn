@@ -1,47 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://wa1i5183d2r0"]
 
 [ext_resource type="Script" uid="uid://d2ru0fsjyknfa" path="res://day_manager.gd" id="1_8ihrk"]
+[ext_resource type="PackedScene" uid="uid://df0lpevlmgut" path="res://mouse_tester.tscn" id="2_at7b0"]
 [ext_resource type="PackedScene" uid="uid://bkhy8ul4b81ku" path="res://clock.tscn" id="2_kl21o"]
-
-[sub_resource type="GDScript" id="GDScript_8ihrk"]
-script/source = "extends Area2D
-
-var _is_mouse_hovering
-
-func _input(event):
-	position = get_viewport().get_mouse_position()
-
-func _on_day_manager_day_started():
-	set_process_mode(ProcessMode.PROCESS_MODE_INHERIT)
-
-
-func _on_day_manager_day_ended():
-	set_process_mode(ProcessMode.PROCESS_MODE_DISABLED)
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl21o"]
-size = Vector2(38, 36)
+[ext_resource type="PackedScene" uid="uid://dk2prnnpuoi8c" path="res://mouse_tester_2.tscn" id="3_2ux1y"]
 
 [node name="DayManager" type="Node2D"]
 script = ExtResource("1_8ihrk")
-
-[node name="MouseTester" type="Area2D" parent="."]
-position = Vector2(312, 162)
-script = SubResource("GDScript_8ihrk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseTester"]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_kl21o")
-
-[node name="ColorRect" type="ColorRect" parent="MouseTester"]
-offset_right = 40.0
-offset_bottom = 40.0
+days = Array[PackedScene]([ExtResource("2_at7b0"), ExtResource("3_2ux1y")])
 
 [node name="Clock" parent="." instance=ExtResource("2_kl21o")]
-position = Vector2(555, 9)
+position = Vector2(-1, 0)
 
-[connection signal="day_ended" from="." to="MouseTester" method="_on_day_manager_day_ended"]
-[connection signal="day_started" from="." to="MouseTester" method="_on_day_manager_day_started"]
-[connection signal="mouse_entered" from="MouseTester" to="MouseTester" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MouseTester" to="MouseTester" method="_on_mouse_exited"]
 [connection signal="timeout" from="Clock" to="." method="_on_clock_timeout"]
