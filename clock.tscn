@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkhy8ul4b81ku"]
+
+[ext_resource type="Script" uid="uid://bdfw0cwe3xyli" path="res://clock.gd" id="1_venu5"]
+
+[node name="Clock" type="Node2D"]
+script = ExtResource("1_venu5")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "12:00 AM"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
