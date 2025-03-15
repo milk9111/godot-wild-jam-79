@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dik8xi8wmqqge"]
+
+[ext_resource type="Script" uid="uid://cbsecua3t4mr2" path="res://clickable_object.gd" id="1_2eoxa"]
+[ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_fki1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eoxa"]
+size = Vector2(32, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idgio"]
+size = Vector2(32, 31)
+
+[node name="Folder" type="CharacterBody2D"]
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_2eoxa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_fki1f")
+
+[node name="CollisionArea" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2eoxa")
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_idgio")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -42.0
+offset_right = 19.0
+offset_bottom = -18.0
+text = "Folder
+"
+
+[connection signal="area_entered" from="DetectArea" to="." method="_on_detect_area_area_entered"]
