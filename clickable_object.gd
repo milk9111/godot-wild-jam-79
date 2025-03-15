@@ -44,8 +44,8 @@ func move():
 
 
 func _on_detect_area_area_entered(area):
-	var new_parent = area.get_child(2)
 	if area.is_in_group("Stack"):
+		var new_parent = area.get_child(2)
 		state = State.STACKED
 		call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
 		call_deferred("reparent",new_parent)
