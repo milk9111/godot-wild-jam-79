@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://baa4t85c58ojf"]
+[gd_scene load_steps=8 format=3 uid="uid://baa4t85c58ojf"]
 
 [ext_resource type="Script" uid="uid://cv5rgijvoucu3" path="res://stack.gd" id="1_7c0hu"]
-[ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_hmspu"]
 [ext_resource type="AudioStream" uid="uid://dbdrhfx287hqh" path="res://Assets/Sound/UnpaidIntern_SetDown_SFX 2.ogg" id="2_vd3a8"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_ek21v"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ek21v"]
 random_pitch = 1.1
@@ -10,10 +10,14 @@ streams_count = 1
 stream_0/stream = ExtResource("2_vd3a8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo3ts"]
-size = Vector2(60.5, 62.0833)
+size = Vector2(140, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd3a8"]
+atlas = ExtResource("3_ek21v")
+region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmspu"]
-size = Vector2(97, 92)
+size = Vector2(103, 68)
 
 [node name="Stack" type="Area2D" groups=["Stack"]]
 y_sort_enabled = true
@@ -23,14 +27,13 @@ script = ExtResource("1_7c0hu")
 placement_sfx = SubResource("AudioStreamRandomizer_ek21v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(5.5, -2.5)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_vo3ts")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -2)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_hmspu")
+texture = SubResource("AtlasTexture_vd3a8")
 
 [node name="Children" type="Marker2D" parent="."]
 
@@ -46,7 +49,7 @@ text = "
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryBody"]
-position = Vector2(7, -1)
+position = Vector2(5.5, -3)
 shape = SubResource("RectangleShape2D_hmspu")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

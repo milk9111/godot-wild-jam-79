@@ -61,15 +61,15 @@ stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(37, 130)
+position = Vector2(167, 56)
 sfx_moved = SubResource("AudioStreamRandomizer_k2a70")
 
 [node name="Clutter2" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(520, 244)
+position = Vector2(508, 244)
 sfx_moved = SubResource("AudioStreamRandomizer_n4m20")
 
 [node name="Clutter3" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(249, 276)
+position = Vector2(226, 259)
 mass = 100.0
 sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
 
@@ -99,7 +99,7 @@ position = Vector2(521, 344)
 [node name="Spawn3Marker" type="Marker2D" parent="Spawns/Spawn3"]
 
 [node name="Spawn4" type="Node2D" parent="Spawns"]
-position = Vector2(59, 346)
+position = Vector2(69, 317)
 
 [node name="Spawn4Marker" type="Marker2D" parent="Spawns/Spawn4"]
 
@@ -143,7 +143,7 @@ collision_mask = 0
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Desk" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(319, 182)
 texture = ExtResource("6_n4m20")
