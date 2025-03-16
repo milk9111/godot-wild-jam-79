@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name ClickableObject
 
 
-const CLICK_THRESHOLD: float = 10.0
-const TWEEN_THRESHOLD: float = 30.0
+const CLICK_THRESHOLD: float = 20.0
+const TWEEN_THRESHOLD: float = 40.0
 const SPEED: float = .25
 const MOVE_SPEED: float = 300.0
 
@@ -13,17 +13,20 @@ var color: Colors:
 	set(new_color):
 		match(new_color):
 			Colors.BLUE:
-				set_modulate(Color.BLUE)
+				sprite_2d.texture = blue_texture
 			Colors.RED:
-				set_modulate(Color.RED)
+				sprite_2d.texture = red_texture
 			Colors.YELLOW: 
-				set_modulate(Color.YELLOW)
+				sprite_2d.texture = yellow_texture
 		color = new_color
 	get():
 		return color
 @onready var sfx = $SFX
 @onready var detect_area = $DetectArea
-
+@onready var sprite_2d = $Sprite2D
+@export var blue_texture:AtlasTexture
+@export var red_texture:AtlasTexture
+@export var yellow_texture:AtlasTexture
 var select_sfx: AudioStreamRandomizer = load("res://Resources/select_sfx.tres")
 var drop_sfx: AudioStreamRandomizer = load("res://Resources/drop_sfx.tres")
 var state:State = State.SPAWNED
@@ -31,36 +34,56 @@ var stack_entered:bool = false
 var move_tween:Tween
 var final_pos: Vector2
 var target_pos:Vector2
+var is_held: bool = false
 var rng = RandomNumberGenerator.new()
 func _ready():
 	color = rng.randi_range(0, 2)
+	$Sprite2D.material.set("shader_parameter/thickness",0.0)
 func _physics_process(delta):
 	
 	match state:
 		0:
+			is_held = false
+			set_shader()
 			target_pos = get_global_mouse_position() 
 			if Input.is_action_just_pressed("select"):
 				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
-		1:
+			
+		1:	
+			is_held = true
+			z_index = 1
 			target_pos = get_global_mouse_position() 
-			if Input.is_action_just_pressed("select"):
+			if Input.is_action_just_released("select"):
 				final_pos = global_position 
 				state = State.DROPPED
 			move(delta)
 		
 		2:
+			is_held = false
 			if Input.is_action_just_pressed("select"):
 				target_pos = get_global_mouse_position() 
 				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 			target_pos = final_pos
+			set_shader()
 			move(delta)
 		3:
-			pass
+			is_held = false
+			z_index = 0
+			detect_area.monitorable = false
+			set_shader()
 			
 
-		
+func set_shader():
+	if state == State.SPAWNED or state == State.DROPPED:
+		if global_position.distance_to(get_viewport().get_mouse_position()) < CLICK_THRESHOLD:
+			$Sprite2D.material.set("shader_parameter/thickness",5.0)
+		else:
+			$Sprite2D.material.set("shader_parameter/thickness",0.0)
+	else:
+		$Sprite2D.material.set("shader_parameter/thickness",0.0)
+	
 func move(delta):
 	var mouse_position = get_viewport().get_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
@@ -90,11 +113,13 @@ func _input(event):
 			#sfx.play()
 		
 func _on_detect_area_area_entered(area):
-	if area.is_in_group("Stack"):
-			var new_parent = area.get_child(2)
-			state = State.STACKED
-			call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
-			call_deferred("reparent",new_parent)
-			global_position = new_parent.global_position
+	pass
+	#if is_held == false:
+		#if area.is_in_group("Stack"):
+				#var new_parent = area.get_child(2)
+				#state = State.STACKED
+				#call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
+				#call_deferred("reparent",new_parent)
+				#global_position = new_parent.global_position
 
 	

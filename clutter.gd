@@ -10,7 +10,8 @@ var sound_playing:bool = false
 func _ready():
 	contact_monitor = true
 	sfx.stream = sfx_moved
-
+	lock_rotation = true
+	
 func _process(delta):
 	if !sound_playing and linear_velocity.length() > 1:
 		play_sound()

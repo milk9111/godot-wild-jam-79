@@ -1,10 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=15 format=3 uid="uid://cch5mqtgi0eh"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
 [ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="3_k2a70"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://3fsjqffvnd4d" path="res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg" id="4_haobm"]
+[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
+atlas = ExtResource("3_ygvcp")
+region = Rect2(143, 13, 106, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygvcp"]
+atlas = ExtResource("3_ygvcp")
+region = Rect2(268, 14, 106, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg7ih"]
+atlas = ExtResource("3_ygvcp")
+region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2a70"]
 random_pitch = 1.1
@@ -35,13 +49,16 @@ position = Vector2(320, 183)
 [node name="Day One Stack One" parent="." instance=ExtResource("2_haobm")]
 position = Vector2(265, 152)
 stack_color = 1
+texture = SubResource("AtlasTexture_urjdr")
 
 [node name="Day One Stack Two" parent="." instance=ExtResource("2_haobm")]
 position = Vector2(436, 150)
+texture = SubResource("AtlasTexture_ygvcp")
 
 [node name="Day One Stack Three" parent="." instance=ExtResource("2_haobm")]
 position = Vector2(121, 151)
 stack_color = 2
+texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
 position = Vector2(37, 130)
@@ -125,5 +142,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(319, 182)
+texture = ExtResource("6_n4m20")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

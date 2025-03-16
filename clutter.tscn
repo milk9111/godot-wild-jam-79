@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4uatqgan4fmb"]
+[gd_scene load_steps=5 format=3 uid="uid://c4uatqgan4fmb"]
 
-[ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_l0vgp"]
 [ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_xeanr"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="2_xeanr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0vgp"]
-size = Vector2(125, 122.5)
+size = Vector2(98, 119.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhuwi"]
+atlas = ExtResource("2_xeanr")
+region = Rect2(180, 189, 48, 58)
 
 [node name="Clutter" type="RigidBody2D"]
 collision_layer = 2
@@ -15,13 +19,12 @@ angular_damp = 100.0
 script = ExtResource("1_xeanr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(-0.5, -0.8125)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_l0vgp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_l0vgp")
+texture = SubResource("AtlasTexture_mhuwi")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -23.0
