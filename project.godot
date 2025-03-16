@@ -20,6 +20,10 @@ run/size/viewport_height=648
 run/size/viewport_width=1152
 run/name="New Game Project"
 
+[autoload]
+
+EventBus="*res://event_bus.gd"
+
 [display]
 
 window/size/viewport_width=640

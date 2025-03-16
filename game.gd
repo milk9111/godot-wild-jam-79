@@ -25,11 +25,11 @@ func _load_next_day():
 	day_manager.clock.initialize()
 	_set_day_holder(day_manager.get_current_day_scene())
 	day_transition.play("fade_out")
-	# unpause player input
+	get_tree().paused = false
 
 
 func _unload_current_day():
-	# pause player input
+	get_tree().paused = true
 	day_transition.play("fade_in")
 
 
