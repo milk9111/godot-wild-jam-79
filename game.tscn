@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuclpry2ndhpk"]
+[gd_scene load_steps=6 format=3 uid="uid://cuclpry2ndhpk"]
 
 [ext_resource type="PackedScene" uid="uid://wa1i5183d2r0" path="res://day_manager.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://cy61n3qf3jchw" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://3e5vl55s2u0u" path="res://day_transition.tscn" id="3_feb5d"]
-[ext_resource type="PackedScene" path="res://test_interact.tscn" id="3_ryrav"]
-[ext_resource type="PackedScene" uid="uid://df0lpevlmgut" path="res://mouse_tester.tscn" id="4_eow3j"]
-[ext_resource type="PackedScene" uid="uid://dk2prnnpuoi8c" path="res://mouse_tester_2.tscn" id="5_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://cwy2xecp5qanl" path="res://score_manager.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dbbi0x8rvdvdc" path="res://global.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -14,11 +13,15 @@ script = ExtResource("1_e2o6t")
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1
 position = Vector2(557, 15)
-days = Array[PackedScene]([ExtResource("3_ryrav"), ExtResource("4_eow3j"), ExtResource("5_j5wjh")])
 
 [node name="DayHolder" type="Node" parent="."]
 
 [node name="DayTransition" parent="." instance=ExtResource("3_feb5d")]
+
+[node name="ScoreManager" parent="." instance=ExtResource("4_fc0e3")]
+
+[node name="Global" parent="." instance=ExtResource("5_7jktm")]
+debug = true
 
 [connection signal="day_ended" from="DayManager" to="." method="_on_day_manager_day_ended"]
 [connection signal="internship_ended" from="DayManager" to="." method="_on_day_manager_internship_ended"]
