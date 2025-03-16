@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://baa4t85c58ojf"]
 
-[ext_resource type="Script" uid="uid://cv5rgijvoucu3" path="res://stack.gd" id="1_7c0hu"]
+[ext_resource type="Script" path="res://stack.gd" id="1_7c0hu"]
 [ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_hmspu"]
 [ext_resource type="AudioStream" uid="uid://dbdrhfx287hqh" path="res://Assets/Sound/UnpaidIntern_SetDown_SFX 2.ogg" id="2_vd3a8"]
 

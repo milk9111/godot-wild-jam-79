@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuclpry2ndhpk"]
+[gd_scene load_steps=10 format=3 uid="uid://cuclpry2ndhpk"]
 
 [ext_resource type="PackedScene" uid="uid://wa1i5183d2r0" path="res://day_manager.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://cy61n3qf3jchw" path="res://game.gd" id="1_e2o6t"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cwy2xecp5qanl" path="res://score_manager.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dbbi0x8rvdvdc" path="res://global.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dk2prnnpuoi8c" path="res://mouse_tester_2.tscn" id="5_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://cqx5ghissvd6t" path="res://performance_review.tscn" id="9_vef74"]
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -27,6 +28,9 @@ days = Array[PackedScene]([ExtResource("3_ryrav"), ExtResource("5_j5wjh"), ExtRe
 [node name="Global" parent="." instance=ExtResource("5_7jktm")]
 debug = true
 
+[node name="PerformanceReview" parent="." instance=ExtResource("9_vef74")]
+
 [connection signal="day_ended" from="DayManager" to="." method="_on_day_manager_day_ended"]
 [connection signal="internship_ended" from="DayManager" to="." method="_on_day_manager_internship_ended"]
 [connection signal="animation_finished" from="DayTransition" to="." method="_on_day_transition_animation_finished"]
+[connection signal="accepted_review" from="PerformanceReview" to="." method="_on_performance_review_accepted_review"]
