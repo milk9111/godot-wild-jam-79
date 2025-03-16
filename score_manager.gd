@@ -13,10 +13,24 @@ func _ready():
 	initialize()
 
 
+func _process(_delta):
+	if Global.debug:
+		if Input.is_action_just_pressed("debug_successful_placement"):
+			EventBus.succeeded_placement.emit()
+		elif Input.is_action_just_pressed("debug_failed_placement"):
+			EventBus.failed_placement.emit()
+		elif Input.is_action_just_pressed("debug_nudged_obstacle"):
+			EventBus.nudged_obstacle.emit()
+
+
 func initialize():
 	_successful_placements = 0
 	_failed_placements = 0
 	_nudged_obstacles = 0 
+
+
+func get_report():
+	return [_successful_placements, _failed_placements, _nudged_obstacles]
 
 
 func _on_event_bus_successful_placement():
