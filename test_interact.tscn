@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1cwaxiqtjia3"]
+
+[ext_resource type="PackedScene" uid="uid://dcwxsags4f3uj" path="res://clickable_folder.tscn" id="1_5rojq"]
+[ext_resource type="PackedScene" path="res://stack.tscn" id="2_vo3ts"]
+[ext_resource type="PackedScene" path="res://clutter.tscn" id="3_23yk8"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Folder" parent="." instance=ExtResource("1_5rojq")]
+position = Vector2(27, 331)
+collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 183)
+
+[node name="Stack" parent="." instance=ExtResource("2_vo3ts")]
+position = Vector2(272, 162)
+
+[node name="Folder2" parent="." instance=ExtResource("1_5rojq")]
+position = Vector2(48, 40)
+
+[node name="Folder3" parent="." instance=ExtResource("1_5rojq")]
+position = Vector2(490, 67)
+
+[node name="Clutter" parent="." instance=ExtResource("3_23yk8")]
+position = Vector2(122, 193)
+
+[node name="Clutter2" parent="." instance=ExtResource("3_23yk8")]
+position = Vector2(520, 244)
+
+[node name="Clutter3" parent="." instance=ExtResource("3_23yk8")]
+position = Vector2(199, 66)
