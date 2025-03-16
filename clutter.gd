@@ -29,4 +29,5 @@ func play_sound():
 
 func _on_sfx_timer_timeout():
 	sound_playing = false
+	print("object nudged!")
 	EventBus.nudged_obstacle.emit()

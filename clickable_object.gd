@@ -22,8 +22,8 @@ var color: Colors:
 @onready var sfx = $SFX
 @onready var detect_area = $DetectArea
 
-var select_sfx: AudioStreamRandomizer = preload("res://Resources/select_sfx.tres")
-var drop_sfx: AudioStreamRandomizer = preload("res://Resources/drop_sfx.tres")
+var select_sfx: AudioStreamRandomizer = load("res://Resources/select_sfx.tres")
+var drop_sfx: AudioStreamRandomizer = load("res://Resources/drop_sfx.tres")
 var state:State = State.SPAWNED
 var stack_entered:bool = false
 var move_tween:Tween
@@ -64,7 +64,7 @@ func move():
 	move_tween.tween_property(self, "global_position", target_pos, SPEED)
 	
 
-func _unhandled_input(event):
+func _input(event):
 	if state == State.SPAWNED or state == State.DROPPED:
 		target_pos = get_global_mouse_position() 
 		if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
