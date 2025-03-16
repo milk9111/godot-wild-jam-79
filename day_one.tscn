@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://i6486bmfemvp"]
+
+[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
+[ext_resource type="PackedScene" uid="uid://dik8xi8wmqqge" path="res://clickable_folder.tscn" id="1_ph6pd"]
+[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="3_k2a70"]
+[ext_resource type="AudioStream" uid="uid://3fsjqffvnd4d" path="res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg" id="4_haobm"]
+[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2a70"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_haobm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n4m20"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_haobm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygvcp"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_haobm")
+
+[node name="Day One" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_n4m20")
+
+[node name="Folder" parent="." instance=ExtResource("1_ph6pd")]
+position = Vector2(27, 331)
+collision_mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 183)
+
+[node name="Day One Stack One" parent="." instance=ExtResource("2_haobm")]
+position = Vector2(265, 152)
+stack_color = 1
+
+[node name="Day One Stack Two" parent="." instance=ExtResource("2_haobm")]
+position = Vector2(436, 150)
+
+[node name="Day One Stack Three" parent="." instance=ExtResource("2_haobm")]
+position = Vector2(121, 151)
+stack_color = 2
+
+[node name="Folder2" parent="." instance=ExtResource("1_ph6pd")]
+position = Vector2(48, 40)
+
+[node name="Folder3" parent="." instance=ExtResource("1_ph6pd")]
+position = Vector2(490, 67)
+
+[node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
+position = Vector2(37, 130)
+sfx_moved = SubResource("AudioStreamRandomizer_k2a70")
+
+[node name="Clutter2" parent="." instance=ExtResource("3_k2a70")]
+position = Vector2(520, 244)
+sfx_moved = SubResource("AudioStreamRandomizer_n4m20")
+
+[node name="Clutter3" parent="." instance=ExtResource("3_k2a70")]
+position = Vector2(199, 66)
+sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ygvcp")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Clutter" to="Folder" method="_on_clutter_body_entered"]

@@ -21,7 +21,7 @@ size = Vector2(32, 33)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idgio"]
 size = Vector2(32, 31)
 
-[node name="Folder" type="CharacterBody2D"]
+[node name="Folder" type="CharacterBody2D" groups=["Item"]]
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_2eoxa")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4uatqgan4fmb"]
+[gd_scene load_steps=4 format=3 uid="uid://c4uatqgan4fmb"]
 
 [ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_l0vgp"]
+[ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_xeanr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0vgp"]
 size = Vector2(125, 122.5)
@@ -10,6 +11,7 @@ collision_mask = 7
 gravity_scale = 0.0
 linear_damp = 50.0
 angular_damp = 50.0
+script = ExtResource("1_xeanr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
@@ -27,3 +29,12 @@ offset_right = 31.0
 offset_bottom = -10.0
 text = "Clutter
 "
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+
+[node name="SFXTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SFXTimer" to="." method="_on_sfx_timer_timeout"]
