@@ -7,10 +7,11 @@
 size = Vector2(125, 122.5)
 
 [node name="Clutter" type="RigidBody2D"]
-collision_mask = 7
+collision_layer = 2
+collision_mask = 263
 gravity_scale = 0.0
 linear_damp = 50.0
-angular_damp = 50.0
+angular_damp = 100.0
 script = ExtResource("1_xeanr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

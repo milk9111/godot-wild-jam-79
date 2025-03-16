@@ -3,8 +3,10 @@ class_name ClickableObject
 
 
 const CLICK_THRESHOLD: float = 10.0
+const TWEEN_THRESHOLD: float = 30.0
+const SPEED: float = .25
+const MOVE_SPEED: float = 300.0
 
-const SPEED: float = 0.25
 enum State {SPAWNED,CLICKED,DROPPED,STACKED}
 enum Colors {BLUE,RED,YELLOW}
 var color: Colors:
@@ -45,7 +47,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("select"):
 				final_pos = global_position 
 				state = State.DROPPED
-			move()
+			move(delta)
 		
 		2:
 			if Input.is_action_just_pressed("select"):
@@ -53,15 +55,25 @@ func _physics_process(delta):
 				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 			target_pos = final_pos
-			move()
+			move(delta)
 		3:
 			pass
 			
 
 		
-func move():
-	move_tween = create_tween()
-	move_tween.tween_property(self, "global_position", target_pos, SPEED)
+func move(delta):
+	var mouse_position = get_viewport().get_mouse_position()
+	var direction = (mouse_position - global_position).normalized()
+	
+	if global_position.distance_to(target_pos) > TWEEN_THRESHOLD:
+		move_tween = create_tween()
+		var target_velocity = direction * MOVE_SPEED
+		move_tween.tween_property(self, "velocity", target_velocity, SPEED)
+	elif global_position.distance_to(target_pos) < TWEEN_THRESHOLD and global_position.distance_to(target_pos) > CLICK_THRESHOLD:
+		velocity = direction * MOVE_SPEED
+	elif global_position.distance_to(target_pos) < CLICK_THRESHOLD:
+		velocity = Vector2.ZERO
+	move_and_slide()
 	
 
 func _input(event):

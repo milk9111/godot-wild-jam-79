@@ -69,6 +69,10 @@ debug_nudged_obstacle={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_9="worldboundary"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

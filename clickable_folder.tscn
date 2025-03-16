@@ -10,8 +10,10 @@ size = Vector2(32, 33)
 size = Vector2(32, 31)
 
 [node name="Folder" type="CharacterBody2D"]
+collision_mask = 257
 input_pickable = true
 motion_mode = 1
+platform_wall_layers = 256
 script = ExtResource("1_2eoxa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

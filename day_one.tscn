@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=10 format=3 uid="uid://cch5mqtgi0eh"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
@@ -20,6 +20,10 @@ stream_0/stream = ExtResource("4_haobm")
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_haobm")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k2a70"]
+a = Vector2(-181, -8)
+b = Vector2(458, -6)
 
 [node name="Day One" type="Node2D"]
 process_mode = 1
@@ -49,6 +53,7 @@ sfx_moved = SubResource("AudioStreamRandomizer_n4m20")
 
 [node name="Clutter3" parent="." instance=ExtResource("3_k2a70")]
 position = Vector2(249, 276)
+mass = 100.0
 sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
@@ -80,5 +85,45 @@ position = Vector2(521, 344)
 position = Vector2(59, 346)
 
 [node name="Spawn4Marker" type="Marker2D" parent="Spawns/Spawn4"]
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(210, 364)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(-29, 7)
+shape = SubResource("SegmentShape2D_k2a70")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(208, 1)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+position = Vector2(-29, 7)
+shape = SubResource("SegmentShape2D_k2a70")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-2, 94)
+rotation = 1.5708
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+position = Vector2(-29, 7)
+shape = SubResource("SegmentShape2D_k2a70")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(642, 117)
+rotation = 1.5708
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+position = Vector2(-29, 7)
+shape = SubResource("SegmentShape2D_k2a70")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
