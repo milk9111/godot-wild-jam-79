@@ -15,7 +15,7 @@ script = ExtResource("1_e2o6t")
 
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1
-position = Vector2(557, 15)
+position = Vector2(556, 13)
 days = Array[PackedScene]([ExtResource("3_ryrav"), ExtResource("5_j5wjh"), ExtResource("4_eow3j")])
 
 [node name="DayHolder" type="Node" parent="."]
