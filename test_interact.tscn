@@ -6,7 +6,7 @@
 
 [node name="Test" type="Node2D"]
 
-[node name="Folder" parent="." instance=ExtResource("1_5rojq")]
+[node name="Folder" parent="." groups=["Item"] instance=ExtResource("1_5rojq")]
 position = Vector2(27, 331)
 collision_mask = 3
 

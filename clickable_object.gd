@@ -2,10 +2,14 @@ extends CharacterBody2D
 class_name ClickableObject
 
 
-const CLICK_THRESHOLD: float = 20.0
+const CLICK_THRESHOLD: float = 10.0
+
 const SPEED: float = 1
 enum State {SPAWNED,CLICKED,DROPPED,STACKED}
+@onready var sfx = $SFX
 
+@export var select_sfx: AudioStreamRandomizer
+@export var drop_sfx: AudioStreamRandomizer
 var state:State = State.SPAWNED
 
 var move_tween:Tween
@@ -28,6 +32,7 @@ func _physics_process(delta):
 		
 		2:
 			if Input.is_action_just_pressed("select"):
+				target_pos = get_global_mouse_position() 
 				if position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 			target_pos = final_pos
@@ -42,7 +47,19 @@ func move():
 	move_tween.tween_property(self, "position", target_pos, SPEED)
 	
 
-
+func _unhandled_input(event):
+	if state == State.SPAWNED or state == State.DROPPED:
+		target_pos = get_global_mouse_position() 
+		if position.distance_to(target_pos) < CLICK_THRESHOLD:
+			if event.is_action_pressed("select"):
+				sfx.stream = select_sfx
+				sfx.play()
+	#if state == State.CLICKED:
+		#
+		#if event.is_action_pressed("select"):
+			#sfx.stream = drop_sfx
+			#sfx.play()
+		
 func _on_detect_area_area_entered(area):
 	if area.is_in_group("Stack"):
 		var new_parent = area.get_child(2)
