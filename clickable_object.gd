@@ -20,11 +20,12 @@ var color: Colors:
 	get():
 		return color
 @onready var sfx = $SFX
+@onready var detect_area = $DetectArea
 
-@export var select_sfx: AudioStreamRandomizer
-@export var drop_sfx: AudioStreamRandomizer
+var select_sfx: AudioStreamRandomizer = preload("res://Resources/select_sfx.tres")
+var drop_sfx: AudioStreamRandomizer = preload("res://Resources/drop_sfx.tres")
 var state:State = State.SPAWNED
-
+var stack_entered:bool = false
 var move_tween:Tween
 var final_pos: Vector2
 var target_pos:Vector2
@@ -37,19 +38,19 @@ func _physics_process(delta):
 		0:
 			target_pos = get_global_mouse_position() 
 			if Input.is_action_just_pressed("select"):
-				if position.distance_to(target_pos) < CLICK_THRESHOLD:
+				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 		1:
 			target_pos = get_global_mouse_position() 
 			if Input.is_action_just_pressed("select"):
-				final_pos = position 
+				final_pos = global_position 
 				state = State.DROPPED
 			move()
 		
 		2:
 			if Input.is_action_just_pressed("select"):
 				target_pos = get_global_mouse_position() 
-				if position.distance_to(target_pos) < CLICK_THRESHOLD:
+				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 			target_pos = final_pos
 			move()
@@ -60,13 +61,13 @@ func _physics_process(delta):
 		
 func move():
 	move_tween = create_tween()
-	move_tween.tween_property(self, "position", target_pos, SPEED)
+	move_tween.tween_property(self, "global_position", target_pos, SPEED)
 	
 
 func _unhandled_input(event):
 	if state == State.SPAWNED or state == State.DROPPED:
 		target_pos = get_global_mouse_position() 
-		if position.distance_to(target_pos) < CLICK_THRESHOLD:
+		if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 			if event.is_action_pressed("select"):
 				sfx.stream = select_sfx
 				sfx.play()
@@ -78,10 +79,10 @@ func _unhandled_input(event):
 		
 func _on_detect_area_area_entered(area):
 	if area.is_in_group("Stack"):
-		var new_parent = area.get_child(2)
-		state = State.STACKED
-		call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
-		call_deferred("reparent",new_parent)
-		position = new_parent.global_position
+			var new_parent = area.get_child(2)
+			state = State.STACKED
+			call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
+			call_deferred("reparent",new_parent)
+			global_position = new_parent.global_position
 
 	

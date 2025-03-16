@@ -1,19 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcwxsags4f3uj"]
+[gd_scene load_steps=5 format=3 uid="uid://dcwxsags4f3uj"]
 
 [ext_resource type="Script" uid="uid://cbsecua3t4mr2" path="res://clickable_object.gd" id="1_2eoxa"]
 [ext_resource type="Texture2D" uid="uid://c4own0dj6lvhc" path="res://icon.svg" id="1_fki1f"]
-[ext_resource type="AudioStream" uid="uid://fd8elcao10ds" path="res://Assets/Sound/MOST_SFX_Pop_1.ogg" id="2_iqdx2"]
-[ext_resource type="AudioStream" uid="uid://dbdrhfx287hqh" path="res://Assets/Sound/UnpaidIntern_SetDown_SFX 2.ogg" id="3_iqdx2"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqdx2"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("2_iqdx2")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o7p10"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("3_iqdx2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2eoxa"]
 size = Vector2(32, 33)
@@ -21,12 +9,10 @@ size = Vector2(32, 33)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idgio"]
 size = Vector2(32, 31)
 
-[node name="Folder" type="CharacterBody2D" groups=["Item"]]
+[node name="Folder" type="CharacterBody2D"]
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_2eoxa")
-select_sfx = SubResource("AudioStreamRandomizer_iqdx2")
-drop_sfx = SubResource("AudioStreamRandomizer_o7p10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

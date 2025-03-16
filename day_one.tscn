@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=9 format=3 uid="uid://cch5mqtgi0eh"]
 
-[ext_resource type="Script" path="res://day_level_class.gd" id="1_n4m20"]
-[ext_resource type="PackedScene" uid="uid://dcwxsags4f3uj" path="res://clickable_folder.tscn" id="1_ph6pd"]
-[ext_resource type="PackedScene" path="res://stack.tscn" id="2_haobm"]
-[ext_resource type="PackedScene" path="res://clutter.tscn" id="3_k2a70"]
+[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
+[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="3_k2a70"]
 [ext_resource type="AudioStream" uid="uid://3fsjqffvnd4d" path="res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg" id="4_haobm"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 
@@ -26,10 +25,6 @@ stream_0/stream = ExtResource("4_haobm")
 process_mode = 1
 script = ExtResource("1_n4m20")
 
-[node name="Folder" parent="." instance=ExtResource("1_ph6pd")]
-position = Vector2(27, 331)
-collision_mask = 3
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 183)
 
@@ -44,12 +39,6 @@ position = Vector2(436, 150)
 position = Vector2(121, 151)
 stack_color = 2
 
-[node name="Folder2" parent="." instance=ExtResource("1_ph6pd")]
-position = Vector2(48, 40)
-
-[node name="Folder3" parent="." instance=ExtResource("1_ph6pd")]
-position = Vector2(490, 67)
-
 [node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
 position = Vector2(37, 130)
 sfx_moved = SubResource("AudioStreamRandomizer_k2a70")
@@ -59,7 +48,7 @@ position = Vector2(520, 244)
 sfx_moved = SubResource("AudioStreamRandomizer_n4m20")
 
 [node name="Clutter3" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(199, 66)
+position = Vector2(249, 276)
 sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
@@ -68,5 +57,28 @@ stream = ExtResource("6_ygvcp")
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 7.0
 
-[connection signal="body_entered" from="Clutter" to="Folder" method="_on_clutter_body_entered"]
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Node2D" parent="Spawns"]
+position = Vector2(62, 36)
+
+[node name="Spawn1Marker" type="Marker2D" parent="Spawns/Spawn1"]
+
+[node name="Spawn2" type="Node2D" parent="Spawns"]
+position = Vector2(521, 50)
+
+[node name="Spawn2Marker" type="Marker2D" parent="Spawns/Spawn2"]
+
+[node name="Spawn3" type="Node2D" parent="Spawns"]
+position = Vector2(521, 344)
+
+[node name="Spawn3Marker" type="Marker2D" parent="Spawns/Spawn3"]
+
+[node name="Spawn4" type="Node2D" parent="Spawns"]
+position = Vector2(59, 346)
+
+[node name="Spawn4Marker" type="Marker2D" parent="Spawns/Spawn4"]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
