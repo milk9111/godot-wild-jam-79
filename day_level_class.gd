@@ -13,7 +13,7 @@ func _ready():
 	ambience.play()
 	spawn_timer.start()
 	spawn_object()
-
+	music.play()
 
 func _on_spawn_timer_timeout():
 	spawn_object()

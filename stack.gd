@@ -17,7 +17,7 @@ enum Colors {BLUE,RED,YELLOW}
 @export var placement_sfx: AudioStreamRandomizer
 @export var texture: AtlasTexture
 var areas_already_entered: Array
-var successful_placement_sfx: AudioStream = load("res://Assets/Sound/MOST_SFX_AscendingKeys.ogg")
+var successful_placement_sfx: AudioStream = load("res://Assets/Sound/UnpaidIntern_SetDown_SFX 2.ogg")
 var unsuccessful_placement_sfx: AudioStream = load("res://Assets/Sound/MOST_SFX_BadKeys.ogg")
 var items_in_stack: Array:
 	set(new_items_in_stack):

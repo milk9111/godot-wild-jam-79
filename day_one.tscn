@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=16 format=3 uid="uid://cch5mqtgi0eh"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://3fsjqffvnd4d" path="res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg" id="4_haobm"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
+[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_ygvcp")
@@ -77,6 +78,7 @@ sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
 stream = ExtResource("6_ygvcp")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_mg7ih")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 7.0
