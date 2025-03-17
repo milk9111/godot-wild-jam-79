@@ -5,7 +5,8 @@ extends RigidBody2D
 @onready var animation_player = $AnimationPlayer
 
 @export var sfx_moved: AudioStreamRandomizer
-
+var slide_sfx = load("res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg")
+var break_sfx = load("res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg")
 var sound_playing:bool = false
 		
 func _ready():
@@ -22,6 +23,7 @@ func _process(delta):
 	
 func play_sound():
 	if sfx_timer.is_stopped():
+		sfx.stream = slide_sfx
 		sound_playing=true
 		sfx.play()
 		sfx_timer.start()
@@ -37,6 +39,7 @@ func _on_sfx_timer_timeout():
 
 
 func _on_detect_area_area_entered(area):
+	sfx.stream = break_sfx
 	if area.is_in_group("TableLeft"):
 		animation_player.play("TableLeft")
 		await animation_player.animation_finished
