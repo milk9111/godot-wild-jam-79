@@ -78,8 +78,9 @@ func check_area():
 							check_stack.stop()
 							sfx.stream = unsuccessful_placement_sfx
 							sfx.play()
-						area.get_parent().state = 3
-						area.reparent(children)
+						var parent = area.get_parent()
+						parent.state = 3
+						parent.reparent(children)
 
 		
 		

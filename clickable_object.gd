@@ -2,12 +2,13 @@ extends CharacterBody2D
 class_name ClickableObject
 
 
-const CLICK_THRESHOLD: float = 20.0
-const TWEEN_THRESHOLD: float = 40.0
-const SPEED: float = .25
-const MOVE_SPEED: float = 300.0
-
-enum State {SPAWNED,CLICKED,DROPPED,STACKED}
+const CLICK_THRESHOLD: float = 60.0
+const LERP_THRESHOLD: float = 30.0
+const SPEED: float = .05
+const ACCELERATION:float = 500.0
+const MOVE_SPEED: float = 500.0
+const SMOOTHING_FACTOR:float = 1
+enum State {SPAWNED,CLICKED,DROPPED,STACKED,QUEUED}
 enum Colors {BLUE,RED,YELLOW}
 var color: Colors:
 	set(new_color):
@@ -67,12 +68,14 @@ func _physics_process(delta):
 					state = State.CLICKED
 			target_pos = final_pos
 			set_shader()
-			move(delta)
+			#move(delta)
 		3:
 			is_held = false
 			z_index = 0
 			detect_area.monitorable = false
 			set_shader()
+		4:
+			pass
 			
 
 func set_shader():
@@ -88,16 +91,18 @@ func move(delta):
 	var mouse_position = get_viewport().get_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
 	
-	if global_position.distance_to(target_pos) > TWEEN_THRESHOLD:
-		move_tween = create_tween()
-		var target_velocity = direction * MOVE_SPEED
-		move_tween.tween_property(self, "velocity", target_velocity, SPEED)
-	elif global_position.distance_to(target_pos) < TWEEN_THRESHOLD and global_position.distance_to(target_pos) > CLICK_THRESHOLD:
-		velocity = direction * MOVE_SPEED
-	elif global_position.distance_to(target_pos) < CLICK_THRESHOLD:
-		velocity = Vector2.ZERO
-	move_and_slide()
+	velocity += direction * ACCELERATION
 	
+	if velocity.length() > MOVE_SPEED:
+		velocity = velocity.normalized() * MOVE_SPEED
+		
+	if (mouse_position - global_position).length() < LERP_THRESHOLD and (mouse_position - global_position).length() >= 10:
+			#velocity = Vector2.ZERO
+			velocity = lerp(velocity, Vector2.ZERO, SMOOTHING_FACTOR)
+	if (mouse_position - global_position).length() < 10:
+			velocity = Vector2.ZERO
+			#velocity = lerp(velocity, Vector2.ZERO, SMOOTHING_FACTOR)
+	move_and_slide()
 
 func _input(event):
 	if state == State.SPAWNED or state == State.DROPPED:
