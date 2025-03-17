@@ -26,12 +26,14 @@ debug = true
 
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1
-position = Vector2(556, 13)
+position = Vector2(504, 25)
 days = Array[PackedScene]([ExtResource("3_vef74"), ExtResource("5_j5wjh"), ExtResource("4_eow3j")])
 
 [node name="PerformanceReview" parent="." instance=ExtResource("9_vef74")]
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_hve3p")]
+visible = false
 
 [connection signal="animation_finished" from="DayTransition" to="." method="_on_day_transition_animation_finished"]
 [connection signal="day_ended" from="DayManager" to="." method="_on_day_manager_day_ended"]
