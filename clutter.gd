@@ -5,7 +5,7 @@ extends RigidBody2D
 @onready var animation_player = $AnimationPlayer
 
 @export var sfx_moved: AudioStreamRandomizer
-var slide_sfx = load("res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg")
+var slide_sfx = load("res://Assets/Sound/mug_tapped_and_slide.ogg")
 var break_sfx = load("res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg")
 var sound_playing:bool = false
 		
