@@ -1,8 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4uatqgan4fmb"]
+[gd_scene load_steps=16 format=3 uid="uid://c4uatqgan4fmb"]
 
 [ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_xeanr"]
+[ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_fq5wb"]
 [ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="2_xeanr"]
 [ext_resource type="AudioStream" uid="uid://166hhj2qj6op" path="res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg" id="3_mhuwi"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dyy2u"]
+streams_count = 1
+stream_0/stream = ExtResource("2_fq5wb")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xeanr"]
 radius = 40.0
@@ -392,6 +397,7 @@ gravity_scale = 0.0
 linear_damp = 50.0
 angular_damp = 100.0
 script = ExtResource("1_xeanr")
+sfx_moved = SubResource("AudioStreamRandomizer_dyy2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 1)

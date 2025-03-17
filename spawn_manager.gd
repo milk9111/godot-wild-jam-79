@@ -5,7 +5,10 @@ const CLICKABLE_FOLDER = preload("res://clickable_folder.tscn")
 @onready var queue = $Queue
 @onready var spawn = $Spawn
 
+var _rng : RandomNumberGenerator
+
 func _ready():
+	_rng = RandomNumberGenerator.new()
 	spawn_object()
 	spawn_timer.start()
 	
@@ -22,18 +25,19 @@ func _on_spawn_timer_timeout():
 
 func spawn_object():
 	var object_to_spawn = CLICKABLE_FOLDER.instantiate()
-	object_to_spawn.state = 4
+	object_to_spawn.state = ClickableObject.State.QUEUED
 	queue.add_child(object_to_spawn)
 	organize_queue()
 func queue_up():
 	var queued_scenes:Array = queue.get_children()
-	var next_up = queued_scenes.pop_front()
+	var next_up = queued_scenes.pop_back()
 	return next_up
 
 func organize_queue():
 	var shift_counter: Vector2 = Vector2(0,0)
 	for item in queue.get_children():
 		item.position = shift_counter
-	for item in queue.get_children():
+	for item : Node2D in queue.get_children():
 		item.position += shift_counter
-		shift_counter+=Vector2(10,-5)
+		item.rotate(_rng.randf_range(-0.1, 0.1))
+		shift_counter+=Vector2(_rng.randf_range(-4, 4), _rng.randf_range(-4, 4))

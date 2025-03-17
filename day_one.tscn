@@ -90,7 +90,6 @@ position = Vector2(287, 311)
 
 [node name="Queue" type="Node2D" parent="SpawnManager"]
 z_index = -1
-y_sort_enabled = true
 position = Vector2(310, 314)
 
 [node name="Viewport Boundaries" type="Node2D" parent="."]
