@@ -5,6 +5,7 @@ extends Node
 @onready var day_transition = $DayTransition
 @onready var score_manager = $ScoreManager
 @onready var performance_review = $PerformanceReview
+@onready var pause_menu = $PauseMenu
 
 var _reached_end_of_internship
 
@@ -14,6 +15,10 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = not get_tree().paused
+		pause_menu.show_menu()
+	
 	if not Global.debug:
 		return 
 	
@@ -66,6 +71,27 @@ func _on_day_transition_animation_finished(anim_name):
 
 func _on_performance_review_accepted_review():
 	if _reached_end_of_internship:
-		get_tree().change_scene_to_file("res://credits.tscn")
+		_go_to_credits()
 	else:
 		_load_next_day()
+
+
+func _on_pause_menu_muted():
+	AudioServer.set_bus_mute(0, true)
+
+
+func _on_pause_menu_unmuted():
+	AudioServer.set_bus_mute(0, false)
+
+
+func _on_pause_menu_exited():
+	# TODO - change to go to start menu
+	_go_to_credits()
+
+
+func _go_to_credits():
+	get_tree().change_scene_to_file("res://credits.tscn")
+
+
+func _on_pause_menu_continued():
+	get_tree().paused = false
