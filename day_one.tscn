@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=20 format=3 uid="uid://cch5mqtgi0eh"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="8_urjdr"]
+[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_ygvcp")
@@ -36,6 +37,11 @@ size = Vector2(20, 318.211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm208"]
 size = Vector2(609, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
+atlas = ExtResource("9_urjdr")
+
+[sub_resource type="SystemFont" id="SystemFont_256nn"]
 
 [node name="Day One" type="Node2D"]
 process_mode = 1
@@ -157,10 +163,76 @@ shape = SubResource("RectangleShape2D_rm208")
 
 [node name="Desk" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(319, 182)
+position = Vector2(311, 180)
 texture = ExtResource("6_n4m20")
 
 [node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
 position = Vector2(270, 225)
 
+[node name="Directions" type="TextureButton" parent="."]
+offset_left = 63.0
+offset_top = 271.0
+offset_right = 169.0
+offset_bottom = 340.0
+scale = Vector2(0.25, 0.5)
+focus_mode = 1
+texture_normal = ExtResource("9_urjdr")
+
+[node name="DirectionsSplash" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="DirectionsSplash"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -92.0
+offset_right = -25.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.5)
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_8jtnn")
+
+[node name="Label" type="Label" parent="DirectionsSplash"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -89.0
+offset_right = 69.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_256nn")
+theme_override_font_sizes/font_size = 10
+text = "Place red folders in red stack
+Place blue folders in blue stack
+Place yellow folders in yellow stack
+"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="DirectionsSplash"]
+offset_left = 267.0
+offset_top = 265.0
+offset_right = 321.0
+offset_bottom = 296.0
+focus_mode = 1
+action_mode = 0
+text = "DONE"
+
+[node name="ColorRect" type="ColorRect" parent="DirectionsSplash"]
+self_modulate = Color(0, 0, 0, 0.572549)
+z_index = -1
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="Directions" to="." method="_on_directions_pressed"]
+[connection signal="pressed" from="DirectionsSplash/Button" to="." method="_on_directions_closed"]
