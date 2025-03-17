@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=22 format=3 uid="uid://cch5mqtgi0eh"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="8_urjdr"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
@@ -37,6 +38,12 @@ size = Vector2(20, 318.211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm208"]
 size = Vector2(609, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_256nn"]
+shader = ExtResource("9_8jtnn")
+shader_parameter/clr = Color(1, 1, 1, 1)
+shader_parameter/type = 1
+shader_parameter/thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
 atlas = ExtResource("9_urjdr")
@@ -76,7 +83,7 @@ stream = ExtResource("7_mg7ih")
 script = ExtResource("8_urjdr")
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 7.0
+wait_time = 5.0
 
 [node name="Spawn" type="Node2D" parent="SpawnManager"]
 position = Vector2(287, 311)
@@ -171,6 +178,7 @@ texture = ExtResource("6_n4m20")
 position = Vector2(270, 225)
 
 [node name="Directions" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_256nn")
 offset_left = 63.0
 offset_top = 271.0
 offset_right = 169.0
@@ -180,7 +188,6 @@ focus_mode = 1
 texture_normal = ExtResource("9_urjdr")
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="DirectionsSplash"]
 anchors_preset = 8
@@ -205,16 +212,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -115.0
-offset_top = -89.0
+offset_top = -74.0
 offset_right = 69.0
-offset_bottom = 90.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_256nn")
 theme_override_font_sizes/font_size = 10
-text = "Place red folders in red stack
-Place blue folders in blue stack
-Place yellow folders in yellow stack
+text = "Place red (N.D.A) folders in red stack.
+Place blue (S.O.P) folders in blue stack.
+Place yellow folders in yellow stack.
 "
 autowrap_mode = 3
 
@@ -230,10 +237,13 @@ text = "DONE"
 [node name="ColorRect" type="ColorRect" parent="DirectionsSplash"]
 self_modulate = Color(0, 0, 0, 0.572549)
 z_index = -1
+offset_top = 9.0
 offset_right = 640.0
-offset_bottom = 360.0
+offset_bottom = 369.0
 mouse_filter = 2
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
+[connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
+[connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]
 [connection signal="pressed" from="Directions" to="." method="_on_directions_pressed"]
 [connection signal="pressed" from="DirectionsSplash/Button" to="." method="_on_directions_closed"]

@@ -81,7 +81,7 @@ func _physics_process(delta):
 func set_shader():
 	if state == State.SPAWNED or state == State.DROPPED:
 		if global_position.distance_to(get_viewport().get_mouse_position()) < CLICK_THRESHOLD:
-			$Sprite2D.material.set("shader_parameter/thickness",5.0)
+			$Sprite2D.material.set("shader_parameter/thickness",3.0)
 		else:
 			$Sprite2D.material.set("shader_parameter/thickness",0.0)
 	else:

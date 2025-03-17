@@ -20,7 +20,7 @@ region = Rect2(21, 96, 102, 75)
 resource_local_to_scene = true
 shader = ExtResource("2_idgio")
 shader_parameter/clr = Color(1, 1, 1, 1)
-shader_parameter/type = 2
+shader_parameter/type = 1
 shader_parameter/thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idgio"]
