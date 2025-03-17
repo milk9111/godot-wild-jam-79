@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
 [ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="3_k2a70"]
 [ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_ygvcp"]
-[ext_resource type="AudioStream" uid="uid://3fsjqffvnd4d" path="res://Assets/Sound/UnpaidIntern_TableSlide_SFX.ogg" id="4_haobm"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
@@ -22,24 +21,21 @@ region = Rect2(268, 14, 106, 69)
 atlas = ExtResource("3_ygvcp")
 region = Rect2(21, 13, 106, 69)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2a70"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("4_haobm")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n4m20"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("4_haobm")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ygvcp"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("4_haobm")
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k2a70"]
 a = Vector2(-181, -8)
 b = Vector2(458, -6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urjdr"]
+size = Vector2(32.8837, 340)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jtnn"]
+size = Vector2(595, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_256nn"]
+size = Vector2(20, 318.211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm208"]
+size = Vector2(609, 20)
 
 [node name="Day One" type="Node2D"]
 process_mode = 1
@@ -61,19 +57,6 @@ texture = SubResource("AtlasTexture_ygvcp")
 position = Vector2(121, 151)
 stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
-
-[node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(167, 56)
-sfx_moved = SubResource("AudioStreamRandomizer_k2a70")
-
-[node name="Clutter2" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(508, 244)
-sfx_moved = SubResource("AudioStreamRandomizer_n4m20")
-
-[node name="Clutter3" parent="." instance=ExtResource("3_k2a70")]
-position = Vector2(161, 249)
-mass = 100.0
-sfx_moved = SubResource("AudioStreamRandomizer_ygvcp")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ygvcp")
@@ -97,49 +80,88 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(310, 314)
 
-[node name="Boundaries" type="Node2D" parent="."]
+[node name="Viewport Boundaries" type="Node2D" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Viewport Boundaries"]
 position = Vector2(210, 364)
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport Boundaries/StaticBody2D"]
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Viewport Boundaries"]
 position = Vector2(208, 1)
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport Boundaries/StaticBody2D2"]
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Viewport Boundaries"]
 position = Vector2(-2, 94)
 rotation = 1.5708
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport Boundaries/StaticBody2D3"]
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Viewport Boundaries"]
 position = Vector2(642, 117)
 rotation = 1.5708
 collision_layer = 256
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport Boundaries/StaticBody2D4"]
 position = Vector2(-29, 7)
 shape = SubResource("SegmentShape2D_k2a70")
+
+[node name="Table Boundaries" type="Node2D" parent="."]
+
+[node name="TableLeft" type="Area2D" parent="Table Boundaries" groups=["TableLeft"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table Boundaries/TableLeft"]
+position = Vector2(26.4404, 187.085)
+rotation = 0.0349066
+shape = SubResource("RectangleShape2D_urjdr")
+
+[node name="TableBottom" type="Area2D" parent="Table Boundaries" groups=["TableBottom"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table Boundaries/TableBottom"]
+position = Vector2(329.5, 339.5)
+shape = SubResource("RectangleShape2D_8jtnn")
+
+[node name="TableRight" type="Area2D" parent="Table Boundaries" groups=["TableRight"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table Boundaries/TableRight"]
+position = Vector2(596.63, 170.901)
+rotation = -0.0349066
+shape = SubResource("RectangleShape2D_256nn")
+
+[node name="TableTop" type="Area2D" parent="Table Boundaries" groups=["TableTop"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table Boundaries/TableTop"]
+position = Vector2(313, 16)
+shape = SubResource("RectangleShape2D_rm208")
 
 [node name="Desk" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(319, 182)
 texture = ExtResource("6_n4m20")
+
+[node name="Clutter" parent="." instance=ExtResource("3_k2a70")]
+position = Vector2(270, 225)
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]

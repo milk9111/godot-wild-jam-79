@@ -35,6 +35,11 @@ window/stretch/mode="viewport"
 [global_group]
 
 Item=""
+TableTop=""
+TableRight=""
+TableLeft=""
+TableBottom=""
+Stack=""
 
 [input]
 
