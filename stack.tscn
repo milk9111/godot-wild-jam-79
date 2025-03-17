@@ -17,7 +17,7 @@ atlas = ExtResource("3_ek21v")
 region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hmspu"]
-size = Vector2(103, 68)
+size = Vector2(84, 58)
 
 [node name="Stack" type="Area2D" groups=["Stack"]]
 y_sort_enabled = true
@@ -49,7 +49,7 @@ text = "
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryBody"]
-position = Vector2(5.5, -3)
+position = Vector2(2, -4)
 shape = SubResource("RectangleShape2D_hmspu")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
