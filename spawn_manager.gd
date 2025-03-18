@@ -39,7 +39,9 @@ func spawn_object():
 		4:
 			object_to_spawn.day = 4
 	queue.add_child(object_to_spawn)
-	organize_queue()
+	object_to_spawn.position += Vector2(_rng.randf_range(-4, 4), _rng.randf_range(-4, 4))
+	object_to_spawn.rotate(_rng.randf_range(-0.1, 0.1))
+	#organize_queue()
 func queue_up():
 	var queued_scenes:Array = queue.get_children()
 	var next_up = queued_scenes.pop_back()
