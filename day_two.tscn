@@ -320,12 +320,14 @@ focus_mode = 1
 texture_normal = ExtResource("9_4e7rn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 root_node = NodePath("../DirectionsSplash")
 libraries = {
 &"": SubResource("AnimationLibrary_256nn")
 }
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 
