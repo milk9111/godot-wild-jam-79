@@ -170,6 +170,7 @@ shape = SubResource("RectangleShape2D_rm208")
 
 [node name="Desk" type="Sprite2D" parent="."]
 z_index = -2
+texture_filter = 1
 position = Vector2(311, 180)
 texture = ExtResource("6_n4m20")
 
@@ -177,6 +178,7 @@ texture = ExtResource("6_n4m20")
 position = Vector2(270, 225)
 
 [node name="Directions" type="TextureButton" parent="."]
+texture_filter = 1
 material = SubResource("ShaderMaterial_256nn")
 offset_left = 63.0
 offset_top = 271.0
@@ -189,6 +191,7 @@ texture_normal = ExtResource("9_urjdr")
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="DirectionsSplash"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

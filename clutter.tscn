@@ -391,6 +391,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.934426, 60.6742), 0.0, 0.0, 0,
 point_count = 2
 
 [node name="Clutter" type="RigidBody2D"]
+texture_filter = 1
 collision_layer = 2
 collision_mask = 279
 gravity_scale = 0.0

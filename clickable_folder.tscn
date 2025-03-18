@@ -44,6 +44,7 @@ red_texture = SubResource("AtlasTexture_iqdx2")
 yellow_texture = SubResource("AtlasTexture_qww6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 material = SubResource("ShaderMaterial_idgio")
 texture = SubResource("AtlasTexture_idgio")
 region_rect = Rect2(-4.85519, -5.8684, 104.855, 78.8684)
