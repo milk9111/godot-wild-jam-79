@@ -34,6 +34,7 @@ func _set_day_holder(day_scene : PackedScene):
 	
 	for child in day_holder.get_children():
 		day_holder.remove_child(child)
+		child.queue_free()
 	
 	day_holder.add_child(day_scene.instantiate())
 
@@ -95,3 +96,7 @@ func _go_to_credits():
 
 func _on_pause_menu_continued():
 	get_tree().paused = false
+
+
+func _on_day_manager_day_started():
+	EventBus.started_day.emit()

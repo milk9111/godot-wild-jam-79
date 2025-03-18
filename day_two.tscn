@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_ty5gw"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="6_acnaj"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_qax2y"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_c8h3e"]
+[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_c8h3e"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
 [ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="10_6qglx"]
 
@@ -203,9 +203,11 @@ stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("4_s0hlr")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("5_ty5gw")
 
 [node name="Held" type="Node2D" parent="."]

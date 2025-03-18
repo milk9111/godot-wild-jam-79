@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="8_urjdr"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
+[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="9_8jtnn"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
@@ -84,45 +84,6 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_256nn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_rm208"]
 resource_name = "FadeIn"
 length = 0.25
@@ -163,6 +124,45 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_256nn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_256nn"]
 _data = {
 &"Fade": SubResource("Animation_8jtnn"),
@@ -174,6 +174,7 @@ _data = {
 atlas = ExtResource("9_urjdr")
 
 [sub_resource type="SystemFont" id="SystemFont_256nn"]
+subpixel_positioning = 0
 
 [node name="Day One" type="Node2D"]
 process_mode = 1
@@ -197,9 +198,11 @@ stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("6_ygvcp")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("7_mg7ih")
 
 [node name="Held" type="Node2D" parent="."]
@@ -311,12 +314,14 @@ focus_mode = 1
 texture_normal = ExtResource("9_urjdr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 root_node = NodePath("../DirectionsSplash")
 libraries = {
 &"": SubResource("AnimationLibrary_256nn")
 }
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 

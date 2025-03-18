@@ -37,6 +37,7 @@ visible = false
 
 [connection signal="animation_finished" from="DayTransition" to="." method="_on_day_transition_animation_finished"]
 [connection signal="day_ended" from="DayManager" to="." method="_on_day_manager_day_ended"]
+[connection signal="day_started" from="DayManager" to="." method="_on_day_manager_day_started"]
 [connection signal="internship_ended" from="DayManager" to="." method="_on_day_manager_internship_ended"]
 [connection signal="accepted_review" from="PerformanceReview" to="." method="_on_performance_review_accepted_review"]
 [connection signal="continued" from="PauseMenu" to="." method="_on_pause_menu_continued"]

@@ -16,9 +16,13 @@ enum Day{ONE,TWO,THREE,FOUR,FIVE}
 func _ready():
 	ambience.play()
 	music.play()
+	EventBus.started_day.connect(_on_started_day)
+
+
+func _on_started_day():
 	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
 	directions_splash.show()
-	
+	get_tree().paused = true
 
 
 func _on_directions_pressed():
@@ -26,6 +30,7 @@ func _on_directions_pressed():
 	directions_splash.show()
 	animation_player.play("FadeIn")
 	await animation_player.animation_finished
+	get_tree().paused = true
 	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
@@ -34,6 +39,7 @@ func _on_directions_closed():
 	
 	animation_player.play("Fade")
 	await animation_player.animation_finished
+	get_tree().paused = false
 	active_folder.process_mode = Node.PROCESS_MODE_INHERIT
 	directions_splash.hide()
 
