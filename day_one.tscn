@@ -211,7 +211,7 @@ stream = ExtResource("7_mg7ih")
 script = ExtResource("8_urjdr")
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 5.0
+wait_time = 2.0
 
 [node name="Spawn" type="Node2D" parent="SpawnManager"]
 position = Vector2(287, 311)

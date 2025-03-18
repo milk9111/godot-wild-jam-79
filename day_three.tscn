@@ -233,7 +233,7 @@ script = ExtResource("6_2g7v7")
 day = 1
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 5.0
+wait_time = 2.0
 
 [node name="Spawn" type="Node2D" parent="SpawnManager"]
 position = Vector2(287, 311)
@@ -344,7 +344,6 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 
@@ -371,14 +370,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 190.0
+offset_left = 188.0
 offset_top = 7.0
-offset_right = 374.0
-offset_bottom = 186.0
+offset_right = 372.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_256nn")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 9
 text = "Intern,
 Place red files in the red stack.
 Place blue files in blue stack.
@@ -386,6 +385,7 @@ Place yellow files in the yellow  stack.
 If you get a file from Mark S., put it in the red stack.
 Don't touch my morning latte.
 Throw away the files for Gustav P. who has been terminated.
+My wife got me some desk plants for my work anniversary. DON’T TOUCH
 Do something with yesterday's latte, it's grossing me out.
 I don't see how you could mess this up.
 "

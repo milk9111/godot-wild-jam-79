@@ -217,7 +217,7 @@ script = ExtResource("6_acnaj")
 day = 1
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 5.0
+wait_time = 2.0
 
 [node name="Spawn" type="Node2D" parent="SpawnManager"]
 position = Vector2(287, 311)
@@ -362,7 +362,7 @@ offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_256nn")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 9
 text = "Intern,
 Place red files in the red stack.
 Place blue files in blue stack.
