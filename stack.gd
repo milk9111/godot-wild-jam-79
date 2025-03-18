@@ -62,55 +62,46 @@ func _on_area_exited(area):
 func check_area():
 	var overlapping_areas = self.get_overlapping_areas()
 	for area in overlapping_areas:
-			if area.get_parent().is_held == false:
-				if area.is_in_group("Item"):
-					if area not in areas_already_entered:
-						areas_already_entered.append(area)
-						var item = area.get_parent()
-						match(day):
-							0:
-								if item.color == stack_color:
-									print("Successful placement")
-									EventBus.succeeded_placement.emit()
-									check_stack.stop()
-									sfx.stream = successful_placement_sfx
-									sfx.play()
-								elif item.color != stack_color:
-									EventBus.failed_placement.emit()
-									check_stack.stop()
-									sfx.stream = unsuccessful_placement_sfx
-									sfx.play()
-							1:
-								if item.text == "Mark S." and stack_color == 1 : 
-									print("Successful placement")
-									EventBus.succeeded_placement.emit()
-									check_stack.stop()
-									sfx.stream = successful_placement_sfx
-									sfx.play()
-								elif item.text == "Mark S." and stack_color != 1 : 
-									print("Failed placement")
-									EventBus.failed_placement.emit()
-									check_stack.stop()
-									sfx.stream = unsuccessful_placement_sfx
-									sfx.play()
-								elif item.color == stack_color and item.text != "Mark S.":
-									print("Successful placement")
-									EventBus.succeeded_placement.emit()
-									check_stack.stop()
-									sfx.stream = successful_placement_sfx
-									sfx.play()
-								elif item.color != stack_color and item.text != "Mark S.":
-									EventBus.failed_placement.emit()
-									check_stack.stop()
-									sfx.stream = unsuccessful_placement_sfx
-									sfx.play()
-								
-						var parent = area.get_parent()
-						parent.state = 3
-						parent.reparent(children)
+		if area.get_parent().is_held or not area.is_in_group("Item") or area in areas_already_entered:
+			continue 
+		
+		areas_already_entered.append(area)
+		var item = area.get_parent()
+		match(day):
+			Day.ONE:
+				if item.color == stack_color:
+					_success_placement()
+				elif item.color != stack_color:
+					_failure_placement()
+			Day.TWO:
+				if item.text == "Mark S." and stack_color == Colors.RED: 
+					_success_placement()
+				elif item.text == "Mark S." and stack_color != Colors.RED: 
+					_failure_placement()
+				elif item.color == stack_color and item.text != "Mark S.":
+					_success_placement()
+				elif item.color != stack_color and item.text != "Mark S.":
+					_failure_placement()
+				
+		var parent = area.get_parent()
+		parent.state = ClickableObject.State.STACKED
+		parent.reparent(children)
 
-		
-		
+
+func _success_placement():
+	print("Successful placement")
+	EventBus.succeeded_placement.emit()
+	check_stack.stop()
+	sfx.stream = successful_placement_sfx
+	sfx.play()
+
+
+func _failure_placement():
+	print("Failed placement")
+	EventBus.failed_placement.emit()
+	check_stack.stop()
+	sfx.stream = unsuccessful_placement_sfx
+	sfx.play()
 
 
 func _on_check_stack_timeout():
