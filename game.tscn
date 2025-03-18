@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://cy61n3qf3jchw" path="res://game.gd" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://3e5vl55s2u0u" path="res://day_transition.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://cch5mqtgi0eh" path="res://day_one.tscn" id="3_vef74"]
-[ext_resource type="PackedScene" uid="uid://df0lpevlmgut" path="res://mouse_tester.tscn" id="4_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cwy2xecp5qanl" path="res://score_manager.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://dbbi0x8rvdvdc" path="res://global.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://ccfkje1e5xvfw" path="res://day_two.tscn" id="7_hve3p"]
+[ext_resource type="PackedScene" uid="uid://djvpsxv155i40" path="res://day_three.tscn" id="8_hve3p"]
 [ext_resource type="PackedScene" uid="uid://cqx5ghissvd6t" path="res://performance_review.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://dxrcdqq301kji" path="res://pause_menu.tscn" id="10_hve3p"]
 
@@ -27,7 +27,7 @@ debug = true
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1
 position = Vector2(504, 25)
-days = Array[PackedScene]([ExtResource("3_vef74"), ExtResource("7_hve3p"), ExtResource("4_eow3j")])
+days = Array[PackedScene]([ExtResource("3_vef74"), ExtResource("7_hve3p"), ExtResource("8_hve3p")])
 
 [node name="PerformanceReview" parent="." instance=ExtResource("9_vef74")]
 visible = false

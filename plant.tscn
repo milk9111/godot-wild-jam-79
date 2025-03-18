@@ -1,21 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4uatqgan4fmb"]
+[gd_scene load_steps=15 format=3 uid="uid://c6pdu4ncf0grf"]
 
-[ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_xeanr"]
-[ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_fq5wb"]
-[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="2_xeanr"]
-[ext_resource type="AudioStream" uid="uid://166hhj2qj6op" path="res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg" id="3_mhuwi"]
+[ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_4oa58"]
+[ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_3syqp"]
+[ext_resource type="AudioStream" uid="uid://166hhj2qj6op" path="res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg" id="4_5o73s"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dyy2u"]
 streams_count = 1
-stream_0/stream = ExtResource("2_fq5wb")
+stream_0/stream = ExtResource("2_3syqp")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xeanr"]
-radius = 40.0
-height = 120.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qljma"]
+size = Vector2(98, 98)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhuwi"]
-atlas = ExtResource("2_xeanr")
-region = Rect2(180, 189, 48, 58)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4oa58"]
+size = Vector2(50, 50)
 
 [sub_resource type="Animation" id="Animation_fq5wb"]
 length = 0.001
@@ -381,39 +378,38 @@ _data = {
 &"TableUp": SubResource("Animation_way7w")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhuwi"]
-radius = 19.0
-height = 58.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3syqp"]
+size = Vector2(48, 50)
 
 [sub_resource type="Curve" id="Curve_6aapq"]
 _limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.934426, 60.6742), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Clutter" type="RigidBody2D"]
+[node name="Plant" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 279
 gravity_scale = 0.0
 linear_damp = 50.0
 angular_damp = 100.0
-script = ExtResource("1_xeanr")
+script = ExtResource("1_4oa58")
 sfx_moved = SubResource("AudioStreamRandomizer_dyy2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1)
+position = Vector2(-0.5, -0.5)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_xeanr")
+shape = SubResource("RectangleShape2D_qljma")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_mhuwi")
+texture = SubResource("PlaceholderTexture2D_4oa58")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -59.0
-offset_right = 31.0
-offset_bottom = -10.0
-text = "
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 34.0
+offset_bottom = 35.0
+text = "Plant
 "
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
@@ -428,15 +424,15 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_mhuwi")
+stream = ExtResource("4_5o73s")
 
 [node name="DetectArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2(-4, 1)
-shape = SubResource("CapsuleShape2D_mhuwi")
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_3syqp")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false

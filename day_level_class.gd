@@ -39,6 +39,7 @@ func _on_directions_closed():
 	
 	animation_player.play("Fade")
 	await animation_player.animation_finished
+	
 	get_tree().paused = false
 	active_folder.process_mode = Node.PROCESS_MODE_INHERIT
 	directions_splash.hide()
@@ -50,3 +51,7 @@ func _on_directions_mouse_entered():
 
 func _on_directions_mouse_exited():
 	directions.material.set("shader_parameter/thickness",0.0)
+
+
+func _on_area_exited(area):
+	pass # Replace with function body.

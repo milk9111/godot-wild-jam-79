@@ -7,9 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_ty5gw"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="6_acnaj"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_qax2y"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_c8h3e"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_c8h3e"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
-[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="10_6qglx"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_6qglx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_nipeb")
@@ -186,18 +186,18 @@ day = 1
 position = Vector2(320, 183)
 
 [node name="Stack One" parent="." instance=ExtResource("2_6qglx")]
-position = Vector2(265, 152)
+position = Vector2(293, 92)
 day = 1
 stack_color = 1
 texture = SubResource("AtlasTexture_urjdr")
 
 [node name="Stack Two" parent="." instance=ExtResource("2_6qglx")]
-position = Vector2(436, 150)
+position = Vector2(450, 92)
 day = 1
 texture = SubResource("AtlasTexture_ygvcp")
 
 [node name="Stack Three" parent="." instance=ExtResource("2_6qglx")]
-position = Vector2(121, 151)
+position = Vector2(137, 91)
 day = 1
 stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
@@ -328,6 +328,7 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 
@@ -389,7 +390,7 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="Clutter" parent="." instance=ExtResource("10_6qglx")]
-position = Vector2(386, 228)
+position = Vector2(380, 238)
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]

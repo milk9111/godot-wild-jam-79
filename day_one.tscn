@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
 [ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="8_urjdr"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="9_8jtnn"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
@@ -184,16 +184,16 @@ script = ExtResource("1_n4m20")
 position = Vector2(320, 183)
 
 [node name="Stack One" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(265, 152)
+position = Vector2(285, 90)
 stack_color = 1
 texture = SubResource("AtlasTexture_urjdr")
 
 [node name="Stack Two" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(436, 150)
+position = Vector2(459, 90)
 texture = SubResource("AtlasTexture_ygvcp")
 
 [node name="Stack Three" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(121, 151)
+position = Vector2(128, 89)
 stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
@@ -322,6 +322,7 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 

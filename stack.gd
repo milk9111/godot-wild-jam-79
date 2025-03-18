@@ -58,7 +58,7 @@ func _on_area_exited(area):
 		if area.get_parent().is_held == true:
 			check_stack.stop()
 		
-		
+#This function requires the day var to be set in the editor in order to match the correct expression
 func check_area():
 	var overlapping_areas = self.get_overlapping_areas()
 	for area in overlapping_areas:
@@ -82,7 +82,17 @@ func check_area():
 					_success_placement()
 				elif item.color != stack_color and item.text != "Mark S.":
 					_failure_placement()
-				
+			Day.TWO:
+				if item.text == "Mark S." and stack_color == Colors.RED: 
+					_success_placement()
+				elif item.text == "Mark S." and stack_color != Colors.RED: 
+					_failure_placement()
+				elif item.text == "Gustav P.":
+					_failure_placement()
+				elif item.color == stack_color and item.text != "Mark S.":
+					_success_placement()
+				elif item.color != stack_color and item.text != "Mark S.":
+					_failure_placement()
 		var parent = area.get_parent()
 		parent.state = ClickableObject.State.STACKED
 		parent.reparent(children)

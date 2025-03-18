@@ -3,7 +3,8 @@ extends RigidBody2D
 @onready var sfx = $SFX
 @onready var sfx_timer = $SFXTimer
 @onready var animation_player = $AnimationPlayer
-
+enum ClutterType{KEEP,WASTE}
+@export var clutter_type:ClutterType = ClutterType.KEEP
 @export var sfx_moved: AudioStreamRandomizer
 var slide_sfx = load("res://Assets/Sound/mug_tapped_and_slide.ogg")
 var break_sfx = load("res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg")
@@ -33,9 +34,10 @@ func play_sound():
 
 func _on_sfx_timer_timeout():
 	sound_playing = false
-	print("object nudged!")
-	EventBus.nudged_obstacle.emit()
-	
+	if clutter_type == ClutterType.KEEP:
+		print("object nudged!")
+		EventBus.nudged_obstacle.emit()
+		
 
 
 func _on_detect_area_area_entered(area):
@@ -56,3 +58,5 @@ func _on_detect_area_area_entered(area):
 		animation_player.play("TableUp")
 		await animation_player.animation_finished
 		queue_free()
+	if area.is_in_group("Trash"):
+		animation_player.play("TableRight")
