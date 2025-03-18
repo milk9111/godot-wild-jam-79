@@ -4,7 +4,8 @@ const CLICKABLE_FOLDER = preload("res://clickable_folder.tscn")
 @onready var spawn_timer = $SpawnTimer
 @onready var queue = $Queue
 @onready var spawn = $Spawn
-
+enum Day{ONE,TWO,THREE,FOUR,FIVE}
+@export var day: Day
 var _rng : RandomNumberGenerator
 
 func _ready():
@@ -26,6 +27,17 @@ func _on_spawn_timer_timeout():
 func spawn_object():
 	var object_to_spawn = CLICKABLE_FOLDER.instantiate()
 	object_to_spawn.state = ClickableObject.State.QUEUED
+	match (day):
+		0:
+			object_to_spawn.day = 0
+		1:
+			object_to_spawn.day = 1
+		2:
+			object_to_spawn.day = 2
+		3:
+			object_to_spawn.day = 3
+		4:
+			object_to_spawn.day = 4
 	queue.add_child(object_to_spawn)
 	organize_queue()
 func queue_up():

@@ -10,6 +10,7 @@ const MOVE_SPEED: float = 500.0
 const SMOOTHING_FACTOR:float = 1
 enum State {SPAWNED,CLICKED,DROPPED,STACKED,QUEUED}
 enum Colors {BLUE,RED,YELLOW}
+enum Day {ONE,TWO,THREE,FOUR,FIVE}
 var color: Colors:
 	set(new_color):
 		match(new_color):
@@ -25,9 +26,12 @@ var color: Colors:
 @onready var sfx = $SFX
 @onready var detect_area = $DetectArea
 @onready var sprite_2d = $Sprite2D
+@onready var label = $Label
+
 @export var blue_texture:AtlasTexture
 @export var red_texture:AtlasTexture
 @export var yellow_texture:AtlasTexture
+var name_strings: Array = ["Mark S.","Barbara H.","Mike W.","Gustav P."]
 var select_sfx: AudioStreamRandomizer = load("res://Resources/select_sfx.tres")
 var drop_sfx: AudioStreamRandomizer = load("res://Resources/drop_sfx.tres")
 var state:State = State.SPAWNED
@@ -37,6 +41,22 @@ var final_pos: Vector2
 var target_pos:Vector2
 var is_held: bool = false
 var rng = RandomNumberGenerator.new()
+var text:String:
+	set(new_text):
+		$Label.text = new_text
+		text = new_text
+	get():
+		return text
+var day:Day:
+	set(new_day):
+		match(new_day):
+			0:
+				pass
+			1: 
+				text = name_strings.pick_random()
+		day = new_day
+	get():
+		return day
 func _ready():
 	color = rng.randi_range(0, 2)
 	$Sprite2D.material.set("shader_parameter/thickness",0.0)

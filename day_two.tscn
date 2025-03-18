@@ -1,25 +1,26 @@
-[gd_scene load_steps=25 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=26 format=3 uid="uid://ccfkje1e5xvfw"]
 
-[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
-[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
-[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_ygvcp"]
-[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
-[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
-[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
-[ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="8_urjdr"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
-[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
+[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_od17v"]
+[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_6qglx"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_nipeb"]
+[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_s0hlr"]
+[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_ty5gw"]
+[ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="6_acnaj"]
+[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_qax2y"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_c8h3e"]
+[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://clutter.tscn" id="10_6qglx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_nipeb")
 region = Rect2(143, 13, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygvcp"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_nipeb")
 region = Rect2(268, 14, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg7ih"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_nipeb")
 region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k2a70"]
@@ -39,7 +40,7 @@ size = Vector2(20, 318.211)
 size = Vector2(609, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_256nn"]
-shader = ExtResource("9_8jtnn")
+shader = ExtResource("8_c8h3e")
 shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
@@ -84,45 +85,6 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_256nn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_rm208"]
 resource_name = "FadeIn"
 length = 0.25
@@ -163,6 +125,45 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_256nn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_256nn"]
 _data = {
 &"Fade": SubResource("Animation_8jtnn"),
@@ -171,41 +172,47 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
-atlas = ExtResource("9_urjdr")
+atlas = ExtResource("9_4e7rn")
 
 [sub_resource type="SystemFont" id="SystemFont_256nn"]
+subpixel_positioning = 0
 
-[node name="Day One" type="Node2D"]
+[node name="Day Two" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_n4m20")
+script = ExtResource("1_od17v")
+day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 183)
 
-[node name="Stack One" parent="." instance=ExtResource("2_haobm")]
+[node name="Stack One" parent="." instance=ExtResource("2_6qglx")]
 position = Vector2(265, 152)
+day = 1
 stack_color = 1
 texture = SubResource("AtlasTexture_urjdr")
 
-[node name="Stack Two" parent="." instance=ExtResource("2_haobm")]
+[node name="Stack Two" parent="." instance=ExtResource("2_6qglx")]
 position = Vector2(436, 150)
+day = 1
 texture = SubResource("AtlasTexture_ygvcp")
 
-[node name="Stack Three" parent="." instance=ExtResource("2_haobm")]
+[node name="Stack Three" parent="." instance=ExtResource("2_6qglx")]
 position = Vector2(121, 151)
+day = 1
 stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ygvcp")
+stream = ExtResource("4_s0hlr")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_mg7ih")
+stream = ExtResource("5_ty5gw")
 
 [node name="Held" type="Node2D" parent="."]
 
 [node name="SpawnManager" type="Node2D" parent="."]
-script = ExtResource("8_urjdr")
+script = ExtResource("6_acnaj")
+day = 1
 
 [node name="SpawnTimer" type="Timer" parent="SpawnManager"]
 wait_time = 5.0
@@ -297,7 +304,7 @@ shape = SubResource("RectangleShape2D_rm208")
 z_index = -2
 texture_filter = 1
 position = Vector2(320, 180)
-texture = ExtResource("6_n4m20")
+texture = ExtResource("7_qax2y")
 
 [node name="Directions" type="TextureButton" parent="."]
 texture_filter = 1
@@ -308,7 +315,7 @@ offset_right = 170.0
 offset_bottom = 342.0
 scale = Vector2(0.27, 0.5)
 focus_mode = 1
-texture_normal = ExtResource("9_urjdr")
+texture_normal = ExtResource("9_4e7rn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../DirectionsSplash")
@@ -355,6 +362,8 @@ text = "Intern,
 Place red files in the red stack.
 Place blue files in blue stack.
 Place yellow files in the yellow  stack.
+If you get a file from Mark S., put it in the red stack.
+Don't touch my latte.
 I don't see how you could mess this up.
 "
 autowrap_mode = 3
@@ -374,6 +383,9 @@ z_index = -1
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+
+[node name="Clutter" parent="." instance=ExtResource("10_6qglx")]
+position = Vector2(386, 228)
 
 [connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]

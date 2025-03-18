@@ -13,6 +13,7 @@ wait_time = 60.0
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(46, 12)
 texture = ExtResource("2_kig64")
 

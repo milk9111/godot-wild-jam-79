@@ -9,7 +9,10 @@ class_name DayLevel
 @onready var button = $DirectionsSplash/Button
 @onready var active_folder = $SpawnManager/Spawn
 @onready var directions = $Directions
+@onready var animation_player = $AnimationPlayer
 
+enum Day{ONE,TWO,THREE,FOUR,FIVE}
+@export var day: Day
 func _ready():
 	ambience.play()
 	music.play()
@@ -20,11 +23,17 @@ func _ready():
 
 func _on_directions_pressed():
 	print("Button pressed")
-	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
 	directions_splash.show()
+	animation_player.play("FadeIn")
+	await animation_player.animation_finished
+	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
+	
 
 func _on_directions_closed():
 	print("Button pressed")
+	
+	animation_player.play("Fade")
+	await animation_player.animation_finished
 	active_folder.process_mode = Node.PROCESS_MODE_INHERIT
 	directions_splash.hide()
 
