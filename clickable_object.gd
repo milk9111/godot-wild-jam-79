@@ -40,6 +40,16 @@ var move_tween:Tween
 var final_pos: Vector2
 var target_pos:Vector2
 var is_held: bool = false
+var currently_unredacting:bool = false
+var redacted:bool:
+	set(new_redacted):
+		if new_redacted == true:
+			set_modulate(Color.BLACK)
+		if new_redacted == false:
+			set_modulate(Color.WHITE)
+		redacted = new_redacted
+	get():
+		return redacted
 var rng = RandomNumberGenerator.new()
 var text:String:
 	set(new_text):
@@ -54,6 +64,13 @@ var day:Day:
 				pass
 			1: 
 				text = name_strings.pick_random()
+			2:
+				text = name_strings.pick_random()
+			3:
+				text = name_strings.pick_random()
+			4:
+				text = name_strings.pick_random()
+			
 		day = new_day
 	get():
 		return day
@@ -95,7 +112,7 @@ func _physics_process(delta):
 			detect_area.monitorable = false
 			set_shader()
 		4:
-			pass
+			$Sprite2D.material.set("shader_parameter/thickness",0.0)
 			
 
 func set_shader():

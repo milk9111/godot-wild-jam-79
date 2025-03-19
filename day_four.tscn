@@ -1,25 +1,29 @@
-[gd_scene load_steps=25 format=3 uid="uid://cch5mqtgi0eh"]
+[gd_scene load_steps=29 format=3 uid="uid://ctldppqd61iox"]
 
-[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_n4m20"]
-[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_haobm"]
-[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_ygvcp"]
-[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
-[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
-[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
-[ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="9_256nn"]
-[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
+[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_gnf7h"]
+[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_8mlwe"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_2va7f"]
+[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_bv5kx"]
+[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_5nne4"]
+[ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="6_8mlwe"]
+[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_6k7nd"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_tpj18"]
+[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_mpgkk"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_35vkj"]
+[ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_bv5kx"]
+[ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_cvihg"]
+[ext_resource type="PackedScene" uid="uid://b8tbjg5xxsmnt" path="res://un_redacter.tscn" id="13_8mlwe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_2va7f")
 region = Rect2(143, 13, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygvcp"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_2va7f")
 region = Rect2(268, 14, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg7ih"]
-atlas = ExtResource("3_ygvcp")
+atlas = ExtResource("3_2va7f")
 region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k2a70"]
@@ -33,13 +37,13 @@ size = Vector2(32.8837, 340)
 size = Vector2(595, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_256nn"]
-size = Vector2(20, 318.211)
+size = Vector2(20, 202.331)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm208"]
 size = Vector2(609, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_256nn"]
-shader = ExtResource("9_8jtnn")
+shader = ExtResource("8_tpj18")
 shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
@@ -171,41 +175,48 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
-atlas = ExtResource("9_urjdr")
+atlas = ExtResource("9_mpgkk")
 
 [sub_resource type="SystemFont" id="SystemFont_256nn"]
 subpixel_positioning = 0
 
-[node name="Day One" type="Node2D"]
+[node name="Day Four" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_n4m20")
+script = ExtResource("1_gnf7h")
+day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 183)
 
-[node name="Stack One" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(285, 90)
+[node name="Stack One" parent="." instance=ExtResource("2_8mlwe")]
+position = Vector2(295, 93)
+day = 2
 stack_color = 1
 texture = SubResource("AtlasTexture_urjdr")
 
-[node name="Stack Two" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(459, 90)
+[node name="Stack Two" parent="." instance=ExtResource("2_8mlwe")]
+position = Vector2(471, 92)
+day = 2
 texture = SubResource("AtlasTexture_ygvcp")
 
-[node name="Stack Three" parent="." instance=ExtResource("2_haobm")]
-position = Vector2(128, 89)
+[node name="Stack Three" parent="." instance=ExtResource("2_8mlwe")]
+position = Vector2(131, 89)
+day = 2
 stack_color = 2
 texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("6_ygvcp")
+stream = ExtResource("4_bv5kx")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("7_mg7ih")
+stream = ExtResource("5_5nne4")
 
 [node name="Held" type="Node2D" parent="."]
+
+[node name="SpawnManager" parent="." instance=ExtResource("6_8mlwe")]
+day = 3
 
 [node name="Viewport Boundaries" type="Node2D" parent="."]
 
@@ -271,7 +282,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Table Boundaries/TableRight"]
-position = Vector2(596.63, 170.901)
+position = Vector2(594.608, 112.996)
 rotation = -0.0349066
 shape = SubResource("RectangleShape2D_256nn")
 
@@ -287,7 +298,7 @@ shape = SubResource("RectangleShape2D_rm208")
 z_index = -2
 texture_filter = 1
 position = Vector2(320, 180)
-texture = ExtResource("6_n4m20")
+texture = ExtResource("7_6k7nd")
 
 [node name="Directions" type="TextureButton" parent="."]
 texture_filter = 1
@@ -298,7 +309,7 @@ offset_right = 170.0
 offset_bottom = 342.0
 scale = Vector2(0.27, 0.5)
 focus_mode = 1
-texture_normal = ExtResource("9_urjdr")
+texture_normal = ExtResource("9_mpgkk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -309,7 +320,6 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 
@@ -330,16 +340,33 @@ scale = Vector2(2, 2.5)
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_8jtnn")
 
-[node name="Label" type="Label" parent="DirectionsSplash/Control"]
+[node name="TextureRect2" type="TextureRect" parent="DirectionsSplash/Control"]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 190.0
+offset_left = 377.0
+offset_top = -12.0
+offset_right = 490.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.5)
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_8jtnn")
+
+[node name="Label1" type="Label" parent="DirectionsSplash/Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 188.0
 offset_top = 7.0
-offset_right = 374.0
-offset_bottom = 186.0
+offset_right = 372.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_256nn")
@@ -348,8 +375,31 @@ text = "Intern,
 Place red files in the red stack.
 Place blue files in blue stack.
 Place yellow files in the yellow  stack.
-I don't see how you could mess this up.
+If you get a file from Mark S., put it in the red stack.
+Don't touch my morning latte.
+Throw away the files for Gustav P. who has been terminated.
+My wife got me some desk plants for my work anniversary. DON’T TOUCH
+Do something with yesterday's latte, it's grossing me out.
+
 "
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="DirectionsSplash/Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 403.0
+offset_top = 10.0
+offset_right = 587.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_256nn")
+theme_override_font_sizes/font_size = 9
+text = "Some of the files will need to be unredacted on The Unredactor
+Don't let them sit for too long."
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="DirectionsSplash"]
@@ -368,8 +418,21 @@ offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 
-[node name="SpawnManager" parent="." instance=ExtResource("9_256nn")]
-day = 0
+[node name="CoffeeCupWaste" parent="." instance=ExtResource("10_35vkj")]
+position = Vector2(190, 201)
+clutter_type = 1
+
+[node name="Trash Can" parent="." instance=ExtResource("11_bv5kx")]
+position = Vector2(604, 287)
+
+[node name="CoffeeCupKeep" parent="." instance=ExtResource("10_35vkj")]
+position = Vector2(108, 164)
+
+[node name="Plant" parent="." instance=ExtResource("12_cvihg")]
+position = Vector2(295, 175)
+
+[node name="UnRedacter" parent="." instance=ExtResource("13_8mlwe")]
+position = Vector2(521, 178)
 
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
 [connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]

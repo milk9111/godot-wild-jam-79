@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_nipeb"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_s0hlr"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_ty5gw"]
-[ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="6_acnaj"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_qax2y"]
 [ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_c8h3e"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
 [ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_6qglx"]
+[ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="10_nipeb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_nipeb")
@@ -212,20 +212,6 @@ stream = ExtResource("5_ty5gw")
 
 [node name="Held" type="Node2D" parent="."]
 
-[node name="SpawnManager" type="Node2D" parent="."]
-script = ExtResource("6_acnaj")
-day = 1
-
-[node name="SpawnTimer" type="Timer" parent="SpawnManager"]
-wait_time = 2.0
-
-[node name="Spawn" type="Node2D" parent="SpawnManager"]
-position = Vector2(287, 311)
-
-[node name="Queue" type="Node2D" parent="SpawnManager"]
-z_index = -1
-position = Vector2(310, 314)
-
 [node name="Viewport Boundaries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Viewport Boundaries"]
@@ -392,7 +378,9 @@ mouse_filter = 2
 [node name="Clutter" parent="." instance=ExtResource("10_6qglx")]
 position = Vector2(380, 238)
 
-[connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
+[node name="SpawnManager" parent="." instance=ExtResource("10_nipeb")]
+day = 1
+
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
 [connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]
 [connection signal="pressed" from="Directions" to="." method="_on_directions_pressed"]

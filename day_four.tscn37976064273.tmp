@@ -1,28 +1,31 @@
-[gd_scene load_steps=32 format=4 uid="uid://djvpsxv155i40"]
+[gd_scene load_steps=37 format=4 uid="uid://ctldppqd61iox"]
 
-[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_kigvd"]
-[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_71txy"]
-[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_i172m"]
-[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_tttgc"]
-[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_bb2aa"]
-[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_xwmoq"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_wsoa6"]
-[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_jw4i4"]
-[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_5h76s"]
-[ext_resource type="Script" uid="uid://hstrycmtek4t" path="res://trash_can.gd" id="11_71txy"]
-[ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_i172m"]
-[ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="12_tttgc"]
+[ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_gnf7h"]
+[ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_8mlwe"]
+[ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="3_2va7f"]
+[ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_bv5kx"]
+[ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_5nne4"]
+[ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="6_a3x50"]
+[ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_6k7nd"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_tpj18"]
+[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_mpgkk"]
+[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_35vkj"]
+[ext_resource type="Script" uid="uid://hstrycmtek4t" path="res://trash_can.gd" id="11_bmr3m"]
+[ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_cvihg"]
+[ext_resource type="Script" uid="uid://dso5uie2w7067" path="res://copier.gd" id="13_8mlwe"]
+[ext_resource type="PackedScene" uid="uid://lh8l74enboib" path="res://Explosion_particles.tscn" id="14_2va7f"]
+[ext_resource type="AudioStream" uid="uid://veaqssu5qrcu" path="res://Assets/Sound/FNF_WW_foley_potions_conjure_exploding_small_poof.wav" id="15_bv5kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
-atlas = ExtResource("3_i172m")
+atlas = ExtResource("3_2va7f")
 region = Rect2(143, 13, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygvcp"]
-atlas = ExtResource("3_i172m")
+atlas = ExtResource("3_2va7f")
 region = Rect2(268, 14, 106, 69)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg7ih"]
-atlas = ExtResource("3_i172m")
+atlas = ExtResource("3_2va7f")
 region = Rect2(21, 13, 106, 69)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k2a70"]
@@ -42,7 +45,7 @@ size = Vector2(20, 202.331)
 size = Vector2(609, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_256nn"]
-shader = ExtResource("8_wsoa6")
+shader = ExtResource("8_tpj18")
 shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
@@ -174,7 +177,7 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
-atlas = ExtResource("9_jw4i4")
+atlas = ExtResource("9_mpgkk")
 
 [sub_resource type="SystemFont" id="SystemFont_256nn"]
 subpixel_positioning = 0
@@ -193,26 +196,32 @@ sampling_rate = 96000.0
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_71txy"]
 packet_sequence = SubResource("OggPacketSequence_efndu")
 
-[node name="Day Three" type="Node2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2va7f"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv5kx"]
+size = Vector2(53, 53)
+
+[node name="Day Four" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_kigvd")
+script = ExtResource("1_gnf7h")
 day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 183)
 
-[node name="Stack One" parent="." instance=ExtResource("2_71txy")]
+[node name="Stack One" parent="." instance=ExtResource("2_8mlwe")]
 position = Vector2(295, 93)
 day = 2
 stack_color = 1
 texture = SubResource("AtlasTexture_urjdr")
 
-[node name="Stack Two" parent="." instance=ExtResource("2_71txy")]
+[node name="Stack Two" parent="." instance=ExtResource("2_8mlwe")]
 position = Vector2(471, 92)
 day = 2
 texture = SubResource("AtlasTexture_ygvcp")
 
-[node name="Stack Three" parent="." instance=ExtResource("2_71txy")]
+[node name="Stack Three" parent="." instance=ExtResource("2_8mlwe")]
 position = Vector2(131, 89)
 day = 2
 stack_color = 2
@@ -220,13 +229,30 @@ texture = SubResource("AtlasTexture_mg7ih")
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("4_tttgc")
+stream = ExtResource("4_bv5kx")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
-stream = ExtResource("5_bb2aa")
+stream = ExtResource("5_5nne4")
 
 [node name="Held" type="Node2D" parent="."]
+
+[node name="SpawnManager" type="Node2D" parent="."]
+script = ExtResource("6_a3x50")
+day = 2
+
+[node name="SpawnTimer" type="Timer" parent="SpawnManager"]
+wait_time = 2.0
+
+[node name="Spawn" type="Node2D" parent="SpawnManager"]
+position = Vector2(287, 311)
+
+[node name="Queue" type="Node2D" parent="SpawnManager"]
+z_index = -1
+position = Vector2(310, 314)
+
+[node name="SpawnSpecial" type="Timer" parent="SpawnManager"]
+wait_time = 20.0
 
 [node name="Viewport Boundaries" type="Node2D" parent="."]
 
@@ -308,7 +334,7 @@ shape = SubResource("RectangleShape2D_rm208")
 z_index = -2
 texture_filter = 1
 position = Vector2(320, 180)
-texture = ExtResource("7_xwmoq")
+texture = ExtResource("7_6k7nd")
 
 [node name="Directions" type="TextureButton" parent="."]
 texture_filter = 1
@@ -319,7 +345,7 @@ offset_right = 170.0
 offset_bottom = 342.0
 scale = Vector2(0.27, 0.5)
 focus_mode = 1
-texture_normal = ExtResource("9_jw4i4")
+texture_normal = ExtResource("9_mpgkk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -330,6 +356,7 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 
@@ -350,7 +377,24 @@ scale = Vector2(2, 2.5)
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_8jtnn")
 
-[node name="Label" type="Label" parent="DirectionsSplash/Control"]
+[node name="TextureRect2" type="TextureRect" parent="DirectionsSplash/Control"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 377.0
+offset_top = -12.0
+offset_right = 490.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.5)
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_8jtnn")
+
+[node name="Label1" type="Label" parent="DirectionsSplash/Control"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -377,6 +421,24 @@ I don't see how you could mess this up.
 "
 autowrap_mode = 3
 
+[node name="Label2" type="Label" parent="DirectionsSplash/Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 188.0
+offset_top = 7.0
+offset_right = 372.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_256nn")
+theme_override_font_sizes/font_size = 9
+text = "
+"
+autowrap_mode = 3
+
 [node name="Button" type="Button" parent="DirectionsSplash"]
 offset_left = 209.0
 offset_top = 252.0
@@ -393,15 +455,15 @@ offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 
-[node name="CoffeeCupWaste" parent="." instance=ExtResource("10_5h76s")]
-position = Vector2(415, 241)
+[node name="CoffeeCupWaste" parent="." instance=ExtResource("10_35vkj")]
+position = Vector2(190, 201)
 clutter_type = 1
 
 [node name="Trash Can" type="Area2D" parent="."]
 position = Vector2(604, 287)
 collision_layer = 2
 collision_mask = 18
-script = ExtResource("11_71txy")
+script = ExtResource("11_bmr3m")
 day = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash Can" groups=["Trash"]]
@@ -417,14 +479,55 @@ stream = SubResource("AudioStreamOggVorbis_71txy")
 [node name="CheckStack" type="Timer" parent="Trash Can"]
 wait_time = 0.5
 
-[node name="CoffeeCupKeep" parent="." instance=ExtResource("10_5h76s")]
-position = Vector2(184, 233)
+[node name="CoffeeCupKeep" parent="." instance=ExtResource("10_35vkj")]
+position = Vector2(108, 164)
 
-[node name="Plant" parent="." instance=ExtResource("12_i172m")]
+[node name="Plant" parent="." instance=ExtResource("12_cvihg")]
 position = Vector2(295, 175)
 
-[node name="SpawnManager" parent="." instance=ExtResource("12_tttgc")]
+[node name="UnRedacter" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("13_8mlwe")
 
+[node name="Sprite2D" type="Sprite2D" parent="UnRedacter"]
+position = Vector2(529, 179)
+texture = SubResource("PlaceholderTexture2D_2va7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnRedacter"]
+position = Vector2(532.5, 180.5)
+shape = SubResource("RectangleShape2D_bv5kx")
+
+[node name="Label" type="Label" parent="UnRedacter"]
+offset_left = 499.0
+offset_top = 149.0
+offset_right = 539.0
+offset_bottom = 198.0
+text = "Un-Redacter"
+autowrap_mode = 2
+
+[node name="ScanComplete" type="Timer" parent="UnRedacter"]
+wait_time = 5.0
+
+[node name="ScanDanger" type="Timer" parent="UnRedacter"]
+wait_time = 5.0
+
+[node name="ScanDestroyed" type="Timer" parent="UnRedacter"]
+wait_time = 5.0
+
+[node name="CheckArea" type="Timer" parent="UnRedacter"]
+wait_time = 0.2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UnRedacter"]
+
+[node name="CPUParticles2D" parent="UnRedacter" instance=ExtResource("14_2va7f")]
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="UnRedacter"]
+stream = ExtResource("15_bv5kx")
+volume_db = -5.0
+
+[connection signal="timeout" from="SpawnManager/SpawnTimer" to="SpawnManager" method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnManager/SpawnSpecial" to="SpawnManager" method="_on_spawn_special_timeout"]
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
 [connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]
 [connection signal="pressed" from="Directions" to="." method="_on_directions_pressed"]
@@ -432,3 +535,9 @@ position = Vector2(295, 175)
 [connection signal="area_entered" from="Trash Can" to="Trash Can" method="_on_area_entered"]
 [connection signal="area_exited" from="Trash Can" to="Trash Can" method="_on_area_exited"]
 [connection signal="timeout" from="Trash Can/CheckStack" to="Trash Can" method="_on_check_stack_timeout"]
+[connection signal="area_entered" from="UnRedacter" to="UnRedacter" method="_on_area_entered"]
+[connection signal="area_exited" from="UnRedacter" to="UnRedacter" method="_on_area_exited"]
+[connection signal="timeout" from="UnRedacter/ScanComplete" to="UnRedacter" method="_on_scan_complete_timeout"]
+[connection signal="timeout" from="UnRedacter/ScanDanger" to="UnRedacter" method="_on_scan_danger_timeout"]
+[connection signal="timeout" from="UnRedacter/ScanDestroyed" to="UnRedacter" method="_on_scan_destroyed_timeout"]
+[connection signal="timeout" from="UnRedacter/CheckArea" to="UnRedacter" method="_on_check_area_timeout"]

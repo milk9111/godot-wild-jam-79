@@ -82,7 +82,7 @@ func check_area():
 					_success_placement()
 				elif item.color != stack_color and item.text != "Mark S.":
 					_failure_placement()
-			Day.TWO:
+			Day.THREE:
 				if item.text == "Mark S." and stack_color == Colors.RED: 
 					_success_placement()
 				elif item.text == "Mark S." and stack_color != Colors.RED: 

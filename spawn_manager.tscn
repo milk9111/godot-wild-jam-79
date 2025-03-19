@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4v6x0v68yymw"]
+
+[ext_resource type="Script" uid="uid://2i1afvunh7f6" path="res://spawn_manager.gd" id="1_svyko"]
+
+[node name="SpawnManager" type="Node2D"]
+script = ExtResource("1_svyko")
+day = 2
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(287, 311)
+
+[node name="Queue" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(310, 314)
+
+[node name="SpawnSpecial" type="Timer" parent="."]
+wait_time = 15.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnSpecial" to="." method="_on_spawn_special_timeout"]
