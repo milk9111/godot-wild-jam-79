@@ -72,27 +72,27 @@ func check_area():
 				if item.color == stack_color:
 					_success_placement()
 				elif item.color != stack_color:
-					_failure_placement()
+					_failure_placement("A file's color did not match the stack")
 			Day.TWO:
 				if item.text == "Mark S." and stack_color == Colors.RED: 
 					_success_placement()
 				elif item.text == "Mark S." and stack_color != Colors.RED: 
-					_failure_placement()
+					_failure_placement("Mark S. file was placed incorrectly")
 				elif item.color == stack_color and item.text != "Mark S.":
 					_success_placement()
 				elif item.color != stack_color and item.text != "Mark S.":
-					_failure_placement()
+					_failure_placement("A file's color did not match the stack")
 			Day.THREE:
 				if item.text == "Mark S." and stack_color == Colors.RED: 
 					_success_placement()
 				elif item.text == "Mark S." and stack_color != Colors.RED: 
-					_failure_placement()
+					_failure_placement("Mark S. file was placed incorrectly")
 				elif item.text == "Gustav P.":
-					_failure_placement()
+					_failure_placement("Gustav P. file was not thrown away")
 				elif item.color == stack_color and item.text != "Mark S.":
 					_success_placement()
 				elif item.color != stack_color and item.text != "Mark S.":
-					_failure_placement()
+					_failure_placement("A file's color did not match the stack")
 		var parent = area.get_parent()
 		parent.state = ClickableObject.State.STACKED
 		parent.reparent(children)
@@ -106,9 +106,9 @@ func _success_placement():
 	sfx.play()
 
 
-func _failure_placement():
+func _failure_placement(reason:String):
 	print("Failed placement")
-	EventBus.failed_placement.emit()
+	EventBus.failed_placement.emit(reason)
 	check_stack.stop()
 	sfx.stream = unsuccessful_placement_sfx
 	sfx.play()

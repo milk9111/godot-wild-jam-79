@@ -23,7 +23,6 @@ script = ExtResource("1_e2o6t")
 [node name="ScoreManager" parent="." instance=ExtResource("4_fc0e3")]
 
 [node name="Global" parent="." instance=ExtResource("5_7jktm")]
-debug = true
 
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1

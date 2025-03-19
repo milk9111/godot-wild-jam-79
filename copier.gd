@@ -56,7 +56,7 @@ func _on_scan_destroyed_timeout():
 		
 		currently_processing_node.queue_free()
 		print("Redacted document destroyed!")
-		EventBus.failed_placement.emit()
+		EventBus.failed_placement.emit("Un-Redacter destroyed file")
 
 
 func _on_check_area_timeout():

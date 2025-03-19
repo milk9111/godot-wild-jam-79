@@ -320,6 +320,7 @@ libraries = {
 
 [node name="DirectionsSplash" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 
 [node name="Control" type="Node2D" parent="DirectionsSplash"]
 

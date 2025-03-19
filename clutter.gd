@@ -36,7 +36,7 @@ func _on_sfx_timer_timeout():
 	sound_playing = false
 	if clutter_type == ClutterType.KEEP:
 		print("object nudged!")
-		EventBus.nudged_obstacle.emit()
+		EventBus.failed_placement.emit("Object on table moved")
 		
 
 

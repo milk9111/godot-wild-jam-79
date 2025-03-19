@@ -29,9 +29,11 @@ func _on_area_entered(area):
 		var parent = area.get_parent()
 		if parent.clutter_type == parent.ClutterType.WASTE:
 			_success_placement()
+			print("throwing away correct coffee cup")
+			EventBus.bonus_objective.emit("Correct coffee cup thrown away")
 			parent.queue_free()
 		else:
-			_failure_placement()
+			_failure_placement("Incorrect object discarded")
 			parent.queue_free()
 	
 	
@@ -54,7 +56,7 @@ func check_area():
 				if item.text == "Gustav P.":
 					_success_placement()
 				else:
-					_failure_placement()
+					_failure_placement("Incorrect file discarded")
 				
 		item.queue_free()
 
@@ -67,9 +69,9 @@ func _success_placement():
 	sfx.play()
 
 
-func _failure_placement():
+func _failure_placement(reason:String):
 	print("Failed placement")
-	EventBus.failed_placement.emit()
+	EventBus.failed_placement.emit(reason)
 	check_stack.stop()
 	sfx.stream = unsuccessful_placement_sfx
 	sfx.play()
