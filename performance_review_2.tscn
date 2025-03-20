@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqx5ghissvd6t"]
+[gd_scene load_steps=6 format=3 uid="uid://b08jxnoiad6ju"]
 
-[ext_resource type="Script" uid="uid://b1x0jjhouap40" path="res://performance_review.gd" id="1_o2xtu"]
-[ext_resource type="Texture2D" uid="uid://cbyqb2l2d2vom" path="res://Assets/Art/KPI Corp.png" id="2_ouuua"]
+[ext_resource type="Script" uid="uid://b1x0jjhouap40" path="res://performance_review.gd" id="1_l1o4x"]
+[ext_resource type="Texture2D" uid="uid://cbyqb2l2d2vom" path="res://Assets/Art/KPI Corp.png" id="2_rj8kd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdk4w"]
 bg_color = Color(0, 0, 0, 1)
@@ -19,7 +19,7 @@ data = {
 image = SubResource("Image_ouuua")
 
 [node name="PerformanceReview" type="CanvasLayer"]
-script = ExtResource("1_o2xtu")
+script = ExtResource("1_l1o4x")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -147,7 +147,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="ReviewSheet/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-texture = ExtResource("2_ouuua")
+texture = ExtResource("2_rj8kd")
 expand_mode = 2
 stretch_mode = 4
 
