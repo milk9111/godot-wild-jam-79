@@ -186,7 +186,7 @@ script = ExtResource("1_gnf7h")
 day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 183)
+position = Vector2(320, 180)
 
 [node name="Stack One" parent="." instance=ExtResource("2_8mlwe")]
 position = Vector2(295, 93)
@@ -377,12 +377,10 @@ Place red files in the red stack.
 Place blue files in blue stack.
 Place yellow files in the yellow  stack.
 If you get a file from Mark S., put it in the red stack.
-Don't touch my morning latte.
+Don't touch my fresh, daily latte's.
 Throw away the files for Gustav P. who has been terminated.
-My wife got me some desk plants for my work anniversary. DON’T TOUCH
-Do something with yesterday's latte, it's grossing me out.
-
-"
+My wife got me a succulent for my work anniversary. DON’T TOUCH
+Oh, and do something with yesterday's latte, each day. It's unsanitary for you to leave them."
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="DirectionsSplash/Control"]
@@ -420,20 +418,20 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="CoffeeCupWaste" parent="." instance=ExtResource("10_35vkj")]
-position = Vector2(190, 201)
+position = Vector2(224, 241)
 clutter_type = 1
 
 [node name="Trash Can" parent="." instance=ExtResource("11_bv5kx")]
 position = Vector2(604, 287)
 
 [node name="CoffeeCupKeep" parent="." instance=ExtResource("10_35vkj")]
-position = Vector2(108, 164)
+position = Vector2(421, 169)
 
 [node name="Plant" parent="." instance=ExtResource("12_cvihg")]
 position = Vector2(295, 175)
 
 [node name="UnRedacter" parent="." instance=ExtResource("13_8mlwe")]
-position = Vector2(521, 178)
+position = Vector2(101, 181)
 
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
 [connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]

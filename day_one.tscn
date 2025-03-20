@@ -181,7 +181,7 @@ process_mode = 1
 script = ExtResource("1_n4m20")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 183)
+position = Vector2(320, 180)
 
 [node name="Stack One" parent="." instance=ExtResource("2_haobm")]
 position = Vector2(285, 90)
@@ -348,7 +348,7 @@ text = "Intern,
 Place red files in the red stack.
 Place blue files in blue stack.
 Place yellow files in the yellow  stack.
-I don't see how you could mess this up.
+
 "
 autowrap_mode = 3
 

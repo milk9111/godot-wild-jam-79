@@ -12,7 +12,7 @@ var _rng : RandomNumberGenerator
 
 func _ready():
 	_rng = RandomNumberGenerator.new()
-	if day == Day.FOUR:
+	if day == Day.FOUR or day == Day.FIVE:
 		spawn_object(true)
 		spawn_special.start()
 	else: 
@@ -48,8 +48,18 @@ func spawn_object(special:bool):
 	object_to_spawn.position += Vector2(_rng.randf_range(-4, 4), _rng.randf_range(-4, 4))
 	object_to_spawn.rotate(_rng.randf_range(-0.1, 0.1))
 	if special == true:
-		print("Spawning redacted folder!")
-		object_to_spawn.redacted = true
+		if day == Day.FOUR:
+			print("Spawning redacted folder!")
+			object_to_spawn.redacted = true
+		if day == Day.FIVE:
+			var choice = randi() % 2
+			print(choice)
+			if choice == 0:
+				print("Spawning redacted folder!")
+				object_to_spawn.redacted = true
+			if choice == 1:
+				print("Spawning Warm Jetty")
+				object_to_spawn.text = "Warm Jetty"
 	#organize_queue()
 func queue_up():
 	var queued_scenes:Array = queue.get_children()

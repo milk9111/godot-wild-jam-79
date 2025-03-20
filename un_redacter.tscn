@@ -30,10 +30,9 @@ text = "Un-Redacter"
 autowrap_mode = 2
 
 [node name="ScanComplete" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 
 [node name="ScanDanger" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="ScanDestroyed" type="Timer" parent="."]
 wait_time = 5.0

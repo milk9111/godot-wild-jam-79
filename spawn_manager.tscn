@@ -17,7 +17,7 @@ z_index = -1
 position = Vector2(310, 314)
 
 [node name="SpawnSpecial" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 7.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="SpawnSpecial" to="." method="_on_spawn_special_timeout"]

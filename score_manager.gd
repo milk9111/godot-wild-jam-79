@@ -30,6 +30,7 @@ func initialize():
 	_failed_placements = 0
 	_nudged_obstacles = 0 
 	_failure_reasons = []
+	_bonus = []
 
 func get_report():
 	return [_successful_placements, _failed_placements,_failure_reasons,_bonus]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuclpry2ndhpk"]
+[gd_scene load_steps=13 format=3 uid="uid://cuclpry2ndhpk"]
 
 [ext_resource type="PackedScene" uid="uid://wa1i5183d2r0" path="res://day_manager.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://cy61n3qf3jchw" path="res://game.gd" id="1_e2o6t"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ctldppqd61iox" path="res://day_four.tscn" id="9_mfdv2"]
 [ext_resource type="PackedScene" uid="uid://cqx5ghissvd6t" path="res://performance_review.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://dxrcdqq301kji" path="res://pause_menu.tscn" id="10_hve3p"]
+[ext_resource type="PackedScene" uid="uid://ct4x3uud7e1fi" path="res://day_five.tscn" id="10_iotsf"]
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -27,7 +28,7 @@ script = ExtResource("1_e2o6t")
 [node name="DayManager" parent="." instance=ExtResource("1_80nbo")]
 process_mode = 1
 position = Vector2(504, 25)
-days = Array[PackedScene]([ExtResource("3_vef74"), ExtResource("7_hve3p"), ExtResource("8_hve3p"), ExtResource("9_mfdv2")])
+days = Array[PackedScene]([ExtResource("3_vef74"), ExtResource("7_hve3p"), ExtResource("8_hve3p"), ExtResource("9_mfdv2"), ExtResource("10_iotsf")])
 
 [node name="PerformanceReview" parent="." instance=ExtResource("9_vef74")]
 visible = false

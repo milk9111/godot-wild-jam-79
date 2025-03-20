@@ -11,7 +11,7 @@ stream_0/stream = ExtResource("2_3syqp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qljma"]
 size = Vector2(98, 98)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4oa58"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qljma"]
 size = Vector2(50, 50)
 
 [sub_resource type="Animation" id="Animation_fq5wb"]
@@ -402,7 +402,7 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_qljma")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_4oa58")
+texture = SubResource("PlaceholderTexture2D_qljma")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0

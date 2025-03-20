@@ -1,6 +1,5 @@
 extends Area2D
 
-
 @onready var scan_complete = $ScanComplete
 @onready var scan_destroyed = $ScanDestroyed
 @onready var check_area_timer = $CheckArea
@@ -8,7 +7,10 @@ extends Area2D
 @onready var sfx = $AudioStreamPlayer2D
 @onready var scan_danger = $ScanDanger
 @onready var explosion_particles = $CPUParticles2D
-
+enum Day{FOUR,FIVE}
+@export var day:Day
+enum State{UNREDACTING,REDACTING}
+@export var state:State
 var currently_processing_node:Node
 var done_sfx:AudioStream = load("res://Assets/Sound/ScannerBeep_ZA02.449.wav")
 var countdown_sfx:AudioStream = load("res://Assets/Sound/ScannerBeepsIncrease_HV.716.wav")
@@ -16,12 +18,13 @@ var puff_sfx:AudioStream = load("res://Assets/Sound/FNF_WW_foley_potions_conjure
 @onready var explosion = $explosion
 
 func _on_area_entered(area):
-	var area_parent = area.get_parent()
-	print(area_parent.redacted)
-	if area_parent.redacted == true and area_parent.is_held:
-		check_area_timer.start()
-
-
+	if area.is_in_group("Item"):
+		var area_parent = area.get_parent()
+		print(area_parent.redacted)
+		if day == Day.FOUR and (area_parent.redacted == true and area_parent.is_held):
+			check_area_timer.start()
+		if day == Day.FIVE and area_parent.is_held and (area_parent.text == "Warm Jetty" or area_parent.redacted == true):
+			check_area_timer.start()
 func _on_area_exited(area):
 	var area_parent = area.get_parent()
 	if area_parent.redacted == true and area_parent.is_held:
@@ -38,8 +41,10 @@ func _on_area_exited(area):
 
 func _on_scan_complete_timeout():
 	print("reenabling redacted node")
-	currently_processing_node.redacted = false
-	
+	if currently_processing_node.redacted == true:
+		currently_processing_node.redacted = false
+	elif currently_processing_node.redacted == false:
+		currently_processing_node.redacted = true
 	currently_processing_node.state = currently_processing_node.State.DROPPED
 	sfx.stream = done_sfx
 	sfx.play()
@@ -53,10 +58,14 @@ func _on_scan_destroyed_timeout():
 	explosion.play()
 	explosion_particles.emitting = true
 	if currently_processing_node:
+		if currently_processing_node.redacted == true and currently_processing_node.text == "Warm Jetty":
+			EventBus.succeeded_placement.emit()
+		else:
+			EventBus.failed_placement.emit("Un-Redacter destroyed file")
 		
 		currently_processing_node.queue_free()
-		print("Redacted document destroyed!")
-		EventBus.failed_placement.emit("Un-Redacter destroyed file")
+		currently_processing_node = null
+		
 
 
 func _on_check_area_timeout():
