@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_qax2y"]
 [ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_c8h3e"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
-[ext_resource type="PackedScene" path="res://coffeecup.tscn" id="10_6qglx"]
+[ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_6qglx"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="10_nipeb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4uatqgan4fmb"]
+[gd_scene load_steps=16 format=3 uid="uid://bmtso2h4ovqqn"]
 
 [ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_b7rsn"]
 [ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_sraqp"]

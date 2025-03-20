@@ -8,6 +8,7 @@ extends Node
 @onready var pause_menu = $PauseMenu
 
 var _reached_end_of_internship
+var _current_day
 
 func _ready():
 	_reached_end_of_internship = false
@@ -64,10 +65,10 @@ func _on_day_manager_internship_ended():
 func _on_day_transition_animation_finished(anim_name):
 	match anim_name:
 		"fade_out":
-			day_manager.start_day()
+			_current_day = day_manager.start_day()
 		"fade_in":
 			var score_report = score_manager.get_report()
-			performance_review.show_report(score_report[0], score_report[1], score_report[2], score_report[3])
+			performance_review.show_report(_current_day, score_report[0], score_report[1], score_report[2], score_report[3])
 
 
 func _on_performance_review_accepted_review():

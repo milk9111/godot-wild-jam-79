@@ -23,6 +23,7 @@ func _on_clock_timeout():
 func start_day():
 	clock.start()
 	day_started.emit()
+	return _current_day_index
 
 
 func end_day():
@@ -38,3 +39,7 @@ func get_current_day_scene() -> PackedScene:
 		return null
 	
 	return days[_current_day_index]
+
+
+func get_current_day():
+	return _current_day_index

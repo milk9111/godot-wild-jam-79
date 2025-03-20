@@ -2,26 +2,39 @@ extends CanvasLayer
 
 signal accepted_review
 
-@onready var success_count_label = %SuccessCountLabel
-@onready var failed_count_label = %FailedCountLabel
-@onready var failures_label = %FailuresLabel
-@onready var failures_description = %FailuresDescription
-@onready var bonus_objectives = %BonusObjectivesLabel
-@onready var bonus_objectives_description = %BonusObjectivesDescription
+@onready var review_text = %ReviewText
+
 
 func _ready():
 	visible = false
-
-func show_report(success_count, failed_count, failures,bonus):
-	success_count_label.text = "Completed tasks:\t\t\t%d" % success_count
-	bonus_objectives.text = "Bonus objectives:"
-	bonus_objectives_description.text = "\n".join(bonus)
-	failed_count_label.text = "Failed tasks:\t\t\t\t\t%d" % failed_count
-	failures_label.text = "Failures: " 
-	failures_description.text = "\n".join(failures)
-	visible = true
 
 
 func _on_accept_button_pressed():
 	visible = false
 	accepted_review.emit()
+
+
+func show_report(day, success_count, failed_count, failures, bonus):
+	visible = true
+	match day:
+		DayLevel.Day.ONE:
+			review_text.parse_bbcode("""
+Date: 02/19/1999
+To: Whom it may concern
+From: Bob Thompson, Floor Supervisor
+Subject: Internship Performance Evaluation
+
+It has been a blast having you be a part of our little family here at KPI Corp. After analyzing system data and compiling peer feedback, we wanted to share with you your daily Internship Performance Evaluation (IPE)!
+
+[ul]
+ Total tasks assigned: %d
+ Completed tasks: %d
+ Growth opportunities: %d
+[/ul]
+
+It's my understanding that you hit some unexpected roadblocks:
+
+[ul]
+%s
+[/ul]
+			""" % [success_count + failed_count, success_count, failed_count, "\n".join(failures)])

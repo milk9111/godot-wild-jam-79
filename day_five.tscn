@@ -7,13 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_pfayw"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="6_hgjqq"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_77imq"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_10c04"]
+[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_10c04"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_5cyvn"]
-[ext_resource type="PackedScene" uid="uid://c4uatqgan4fmb" path="res://coffeecup.tscn" id="10_xsxb7"]
+[ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_xsxb7"]
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_rvibk"]
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_7citq"]
 [ext_resource type="PackedScene" uid="uid://b8tbjg5xxsmnt" path="res://un_redacter.tscn" id="13_jqe1d"]
-[ext_resource type="Script" uid="uid://bvjdv31hk12ff" path="res://plant_spawn.gd" id="14_3ucft"]
+[ext_resource type="Script" path="res://plant_spawn.gd" id="14_3ucft"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_mni4q")

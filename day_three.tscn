@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_xwmoq"]
 [ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_wsoa6"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_jw4i4"]
-[ext_resource type="PackedScene" path="res://coffeecup.tscn" id="10_5h76s"]
-[ext_resource type="Script" path="res://trash_can.gd" id="11_71txy"]
+[ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_5h76s"]
+[ext_resource type="Script" uid="uid://hstrycmtek4t" path="res://trash_can.gd" id="11_71txy"]
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_i172m"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="12_tttgc"]
 
