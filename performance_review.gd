@@ -6,6 +6,7 @@ signal accepted_review
 @onready var animation_player = $AnimationPlayer
 @onready var accept_button = %AcceptButton
 @onready var review_sheet = $ReviewSheet
+@onready var title = %Title
 
 
 func _ready():
@@ -17,6 +18,7 @@ func _on_accept_button_pressed():
 
 
 func show_report(day, success_count, failed_count, failures, bonus):
+	title.text = "PERFORMANCE REVIEW (DAY %d)" % [day+1]
 	var distinct_failures = {}
 	for failure in failures:
 		distinct_failures[failure] = null
