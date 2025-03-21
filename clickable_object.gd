@@ -5,8 +5,8 @@ class_name ClickableObject
 const CLICK_THRESHOLD: float = 60.0
 const LERP_THRESHOLD: float = 30.0
 const SPEED: float = .05
-const ACCELERATION:float = 500.0
-const MOVE_SPEED: float = 500.0
+const ACCELERATION:float = 700.0
+const MOVE_SPEED: float = 700.0
 const SMOOTHING_FACTOR:float = 1
 enum State {SPAWNED,CLICKED,DROPPED,STACKED,QUEUED}
 enum Colors {BLUE,RED,YELLOW}

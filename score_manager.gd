@@ -26,6 +26,7 @@ func _process(_delta):
 
 
 func initialize():
+	print("initializing score vars")
 	_successful_placements = 0
 	_failed_placements = 0
 	_nudged_obstacles = 0 

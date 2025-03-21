@@ -3,12 +3,14 @@ extends CanvasLayer
 signal accepted_review
 
 @onready var review_text = %ReviewText
+@onready var animation_player = $AnimationPlayer
+@onready var accept_button = %AcceptButton
+@onready var review_sheet = $ReviewSheet
 
 
 func _ready():
 	visible = false
-
-
+	
 func _on_accept_button_pressed():
 	visible = false
 	accepted_review.emit()
@@ -16,6 +18,9 @@ func _on_accept_button_pressed():
 
 func show_report(day, success_count, failed_count, failures, bonus):
 	visible = true
+	#visibility of ReviewSheet handled by animation player 
+	animation_player.play("print_report")
+	
 	match day:
 		DayLevel.Day.ONE:
 			review_text.parse_bbcode("""
@@ -38,3 +43,5 @@ It's my understanding that you hit some unexpected roadblocks:
 %s
 [/ul]
 			""" % [success_count + failed_count, success_count, failed_count, "\n".join(failures)])
+	await animation_player.animation_finished
+	accept_button.show()

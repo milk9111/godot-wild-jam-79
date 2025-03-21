@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmtso2h4ovqqn"]
+[gd_scene load_steps=17 format=3 uid="uid://bmtso2h4ovqqn"]
 
 [ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_b7rsn"]
 [ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_sraqp"]
@@ -386,12 +386,17 @@ _data = {
 radius = 19.0
 height = 58.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sraqp"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("2_sraqp")
+
 [node name="CoffeeCup" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 279
 gravity_scale = 0.0
-linear_damp = 50.0
+linear_damp = 100.0
 angular_damp = 100.0
 script = ExtResource("1_b7rsn")
 sfx_moved = SubResource("AudioStreamRandomizer_dyy2u")
@@ -412,10 +417,8 @@ offset_bottom = -10.0
 text = "
 "
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -5.0
-
 [node name="SFXTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -435,6 +438,9 @@ position = Vector2(-4, 1)
 shape = SubResource("CapsuleShape2D_mhuwi")
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("5_sraqp")]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_sraqp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="SFXTimer" to="." method="_on_sfx_timer_timeout"]

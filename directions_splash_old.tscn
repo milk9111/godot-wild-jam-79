@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://babjjoehbq53n"]
+
+[ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="1_xpyvv"]
+[ext_resource type="FontFile" uid="uid://dye0q3v5hkk8u" path="res://Resources/ConnectionII.otf" id="2_21qal"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
+atlas = ExtResource("1_xpyvv")
+
+[node name="DirectionsSplash" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Control" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 166.0
+offset_top = -12.0
+offset_right = 279.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.5)
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_8jtnn")
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 377.0
+offset_top = -12.0
+offset_right = 490.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2.5)
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_8jtnn")
+
+[node name="Label1" type="RichTextLabel" parent="Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 188.0
+offset_top = 7.0
+offset_right = 928.0
+offset_bottom = 895.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/normal_font = ExtResource("2_21qal")
+theme_override_font_sizes/normal_font_size = 45
+text = "Intern,
+Place red files in the red stack.
+Place blue files in blue stack.
+Place yellow files in the yellow  stack.
+If you get a file from Mark S., put it in the red stack.
+Don't touch my fresh, daily latte's.
+Throw away the files for Gustav P. who has been terminated.
+My wife got me a succulent for my work anniversary. DON’T TOUCH
+Oh, and do something with yesterday's latte, each day. It's unsanitary for you to leave them."
+
+[node name="Label2" type="RichTextLabel" parent="Control"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 403.0
+offset_top = 10.0
+offset_right = 1127.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/normal_font = ExtResource("2_21qal")
+theme_override_font_sizes/normal_font_size = 45
+text = "Some of the files will need to be unredacted on The Unredactor.
+Don't let them sit for too long."
+
+[node name="Button" type="Button" parent="."]
+offset_left = 209.0
+offset_top = 252.0
+offset_right = 357.0
+offset_bottom = 283.0
+focus_mode = 1
+action_mode = 0
+text = "Understood, boss."
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.572549)
+z_index = -1
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2

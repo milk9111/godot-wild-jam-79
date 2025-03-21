@@ -1,26 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6pdu4ncf0grf"]
+[gd_scene load_steps=18 format=3 uid="uid://boj2orqo4rpj8"]
 
-[ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_4oa58"]
-[ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_3syqp"]
-[ext_resource type="Texture2D" uid="uid://bhbxbqx05u2wj" path="res://Assets/Art/Extra_Sprites2x-small.png" id="3_4oa58"]
-[ext_resource type="AudioStream" uid="uid://166hhj2qj6op" path="res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg" id="4_5o73s"]
+[ext_resource type="Script" uid="uid://litp3r01okoi" path="res://clutter.gd" id="1_044mt"]
+[ext_resource type="AudioStream" uid="uid://dwkdbt1va8pm" path="res://Assets/Sound/mug_tapped_and_slide.ogg" id="2_ipxnf"]
+[ext_resource type="Texture2D" uid="uid://bfnkhvmvilhnx" path="res://Assets/Art/Broken_Mug-small.png" id="3_044mt"]
+[ext_resource type="AudioStream" uid="uid://166hhj2qj6op" path="res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg" id="4_gkfb7"]
+[ext_resource type="AudioStream" uid="uid://bonjxeye3ir67" path="res://Assets/Sound/UnpaidIntern_SFX_Trash.ogg" id="4_ipxnf"]
+[ext_resource type="PackedScene" uid="uid://lh8l74enboib" path="res://Explosion_particles.tscn" id="5_jsfcv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dyy2u"]
 streams_count = 1
-stream_0/stream = ExtResource("2_3syqp")
+stream_0/stream = ExtResource("2_ipxnf")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3syqp"]
-radius = 44.0
-height = 110.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xeanr"]
+radius = 40.0
+height = 120.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4oa58"]
-atlas = ExtResource("3_4oa58")
-region = Rect2(127, 44, 52, 56)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4oa58"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ipxnf"]
 random_pitch = 1.05
 streams_count = 1
-stream_0/stream = ExtResource("2_3syqp")
+stream_0/stream = ExtResource("2_ipxnf")
 
 [sub_resource type="Animation" id="Animation_fq5wb"]
 length = 0.001
@@ -95,6 +93,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UnpaidInternSfxTrash:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_q7r8f"]
@@ -377,53 +387,118 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_5uc7o"]
+resource_name = "Trash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(30, 0), Vector2(30, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.785398]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UnpaidInternSfxTrash:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12dch"]
 _data = {
 &"RESET": SubResource("Animation_fq5wb"),
 &"TableDown": SubResource("Animation_q7r8f"),
 &"TableLeft": SubResource("Animation_mhuwi"),
 &"TableRight": SubResource("Animation_dyy2u"),
-&"TableUp": SubResource("Animation_way7w")
+&"TableUp": SubResource("Animation_way7w"),
+&"Trash": SubResource("Animation_5uc7o")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5o73s"]
-radius = 20.0
-height = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhuwi"]
+radius = 19.0
+height = 58.0
 
-[sub_resource type="Curve" id="Curve_6aapq"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.934426, 60.6742), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[node name="Plant" type="RigidBody2D"]
+[node name="CoffeeCup" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 2
 collision_mask = 279
 gravity_scale = 0.0
 linear_damp = 50.0
 angular_damp = 100.0
-script = ExtResource("1_4oa58")
+script = ExtResource("1_044mt")
+clutter_type = 1
 sfx_moved = SubResource("AudioStreamRandomizer_dyy2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 1)
+position = Vector2(-3, 1)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_3syqp")
+shape = SubResource("CapsuleShape2D_xeanr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_4oa58")
+texture = ExtResource("3_044mt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -14.0
-offset_right = 34.0
-offset_bottom = 35.0
+offset_left = -23.0
+offset_top = -59.0
+offset_right = 31.0
+offset_bottom = -10.0
+text = "
+"
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_4oa58")
+stream = SubResource("AudioStreamRandomizer_ipxnf")
 volume_db = -5.0
+max_polyphony = 2
 
 [node name="SFXTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -431,29 +506,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_12dch")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_5o73s")
+[node name="UnpaidInternSfxTrash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ipxnf")
 
-[node name="DetectArea" type="Area2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gkfb7")
+
+[node name="DetectArea" type="Area2D" parent="." groups=["Clutter"]]
 collision_layer = 16
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
-position = Vector2(2, 0)
-shape = SubResource("CapsuleShape2D_5o73s")
+position = Vector2(-4, 1)
+shape = SubResource("CapsuleShape2D_mhuwi")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 50
-one_shot = true
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 50.0
-spread = 10.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-radial_accel_curve = SubResource("Curve_6aapq")
+[node name="CPUParticles2D" parent="." instance=ExtResource("5_jsfcv")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="SFXTimer" to="." method="_on_sfx_timer_timeout"]

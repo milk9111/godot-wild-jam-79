@@ -26,11 +26,22 @@ func initialize():
 	_update_time_left_to_live(timer.wait_time)
 
 
-func start():
+func start(day:int):
 	_is_ended = false
+	match (day):
+		0:
+			timer.wait_time = 45.0
+		1:
+			timer.wait_time = 60.0
+		2:
+			timer.wait_time = 75.0
+		3:
+			timer.wait_time = 90.0
+		4: 
+			timer.wait_time = 105.0
 	timer.start()
 	initialize()
-
+	
 
 func _ready():
 	_is_ended = true
@@ -54,3 +65,5 @@ func _update_time_left_to_live(time_left):
 func _on_timer_timeout():
 	_is_ended = true 
 	timeout.emit()
+
+	

@@ -4,31 +4,31 @@ extends RigidBody2D
 @onready var sfx_timer = $SFXTimer
 @onready var animation_player = $AnimationPlayer
 enum ClutterType{KEEP,WASTE}
+signal discarding_complete
 @export var clutter_type:ClutterType = ClutterType.KEEP
 @export var sfx_moved: AudioStreamRandomizer
 var slide_sfx = load("res://Assets/Sound/mug_tapped_and_slide.ogg")
 var break_sfx = load("res://Assets/Sound/ESM_Builder_Game_Ceramic_Break_Large_3_Organic_Smash_Crash_Crumble_Drop_Splatter_Particle_Hit_Stab_Impact.ogg")
 var sound_playing:bool = false
-		
+var current_position	
 func _ready():
 	contact_monitor = true
-	sfx.stream = sfx_moved
 	lock_rotation = true
-	
+	current_position = global_position
 func _process(delta):
-	if !sound_playing and linear_velocity.length() > 1:
+	if current_position != global_position:
 		play_sound()
-	elif sound_playing and linear_velocity.length() > 1:
+	else:
 		pass
+	current_position = global_position
 	
 	
 func play_sound():
 	if sfx_timer.is_stopped():
-		sfx.stream = slide_sfx
-		sound_playing=true
-		sfx.play()
+		$SFX.play()
 		sfx_timer.start()
-		
+	else:
+		pass
 	
 
 
@@ -41,7 +41,6 @@ func _on_sfx_timer_timeout():
 
 
 func _on_detect_area_area_entered(area):
-	sfx.stream = break_sfx
 	if area.is_in_group("TableLeft"):
 		animation_player.play("TableLeft")
 		await animation_player.animation_finished
@@ -59,4 +58,6 @@ func _on_detect_area_area_entered(area):
 		await animation_player.animation_finished
 		queue_free()
 	if area.is_in_group("Trash"):
-		animation_player.play("TableRight")
+		animation_player.play("Trash")
+		await animation_player.animation_finished
+		queue_free()

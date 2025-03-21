@@ -1,1 +1,1 @@
-extends TextureButton
+extends CanvasLayer

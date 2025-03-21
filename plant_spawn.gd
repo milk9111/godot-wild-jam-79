@@ -12,6 +12,7 @@ func _on_timer_timeout():
 		if spawns.get_children().size() == 0:
 			var plant = PLANT.instantiate()
 			plant.clutter_type = plant.ClutterType.WASTE
+			plant.set_modulate("f4969e")
 			spawns.add_child(plant)
 			return
 		else:

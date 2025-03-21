@@ -21,7 +21,7 @@ func _on_clock_timeout():
 
 
 func start_day():
-	clock.start()
+	clock.start(_current_day_index)
 	day_started.emit()
 	return _current_day_index
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ct4x3uud7e1fi"]
+[gd_scene load_steps=26 format=3 uid="uid://ct4x3uud7e1fi"]
 
 [ext_resource type="Script" uid="uid://duw5h16xl6n6b" path="res://day_level_class.gd" id="1_iwq5h"]
 [ext_resource type="PackedScene" uid="uid://baa4t85c58ojf" path="res://stack.tscn" id="2_3ucft"]
@@ -7,13 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_pfayw"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="6_hgjqq"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_77imq"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_10c04"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_10c04"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_5cyvn"]
 [ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_xsxb7"]
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_rvibk"]
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_7citq"]
 [ext_resource type="PackedScene" uid="uid://b8tbjg5xxsmnt" path="res://un_redacter.tscn" id="13_jqe1d"]
-[ext_resource type="Script" path="res://plant_spawn.gd" id="14_3ucft"]
+[ext_resource type="Script" uid="uid://bvjdv31hk12ff" path="res://plant_spawn.gd" id="14_3ucft"]
+[ext_resource type="PackedScene" uid="uid://bv8hjbpyg2wb3" path="res://directions.tscn" id="15_mni4q"]
+[ext_resource type="PackedScene" uid="uid://boj2orqo4rpj8" path="res://coffeecup_waste.tscn" id="16_jni6d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_mni4q")
@@ -48,138 +50,6 @@ shader = ExtResource("8_10c04")
 shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
-
-[sub_resource type="Animation" id="Animation_8jtnn"]
-resource_name = "Fade"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(32, 270)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.15, 0.15)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_rm208"]
-resource_name = "FadeIn"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(32, 270), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.15, 0.15), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_256nn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Button:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_256nn"]
-_data = {
-&"Fade": SubResource("Animation_8jtnn"),
-&"FadeIn": SubResource("Animation_rm208"),
-&"RESET": SubResource("Animation_256nn")
-}
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jtnn"]
-atlas = ExtResource("9_5cyvn")
-
-[sub_resource type="SystemFont" id="SystemFont_256nn"]
-subpixel_positioning = 0
 
 [node name="Day Five" type="Node2D"]
 process_mode = 1
@@ -314,124 +184,8 @@ scale = Vector2(0.27, 0.5)
 focus_mode = 1
 texture_normal = ExtResource("9_5cyvn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-process_mode = 3
-root_node = NodePath("../DirectionsSplash")
-libraries = {
-&"": SubResource("AnimationLibrary_256nn")
-}
-
-[node name="DirectionsSplash" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-
-[node name="Control" type="Node2D" parent="DirectionsSplash"]
-
-[node name="TextureRect" type="TextureRect" parent="DirectionsSplash/Control"]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 166.0
-offset_top = -12.0
-offset_right = 279.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2.5)
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_8jtnn")
-
-[node name="TextureRect2" type="TextureRect" parent="DirectionsSplash/Control"]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 377.0
-offset_top = -12.0
-offset_right = 490.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2.5)
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_8jtnn")
-
-[node name="Label1" type="Label" parent="DirectionsSplash/Control"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 188.0
-offset_top = 7.0
-offset_right = 372.0
-offset_bottom = 242.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_256nn")
-theme_override_font_sizes/font_size = 9
-text = "Intern,
-Place red files in the red stack.
-Place blue files in blue stack.
-Place yellow files in the yellow  stack.
-If you get a file from Mark S., put it in the red stack.
-Don't touch my fresh, daily latte's.
-Throw away the files for Gustav P. who has been terminated.
-My wife got me a succulent for my work anniversary. DON’T TOUCH
-Oh, and do something with yesterday's latte, each day. It's unsanitary for you to leave them.
-"
-autowrap_mode = 3
-
-[node name="Label2" type="Label" parent="DirectionsSplash/Control"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 403.0
-offset_top = 10.0
-offset_right = 587.0
-offset_bottom = 245.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_256nn")
-theme_override_font_sizes/font_size = 9
-text = "Some of the files will need to be unredacted on The Unredactor
-Don't let them sit for too long.
-DANGER
-Eviscerate all records of Warm Jetty that you recieve.
-Oh, and the succulent company my wife bought from  called me. Due to a clerical error, every one of their succulents are getting delivered to this desk, today. 
-I'm sure the janitor won't mind sweeping them up.
-Happy Friday."
-autowrap_mode = 3
-
-[node name="Button" type="Button" parent="DirectionsSplash"]
-offset_left = 209.0
-offset_top = 252.0
-offset_right = 357.0
-offset_bottom = 283.0
-focus_mode = 1
-action_mode = 0
-text = "Understood, boss."
-
-[node name="ColorRect" type="ColorRect" parent="DirectionsSplash"]
-self_modulate = Color(0, 0, 0, 0.572549)
-z_index = -1
-offset_right = 640.0
-offset_bottom = 360.0
-mouse_filter = 2
-
-[node name="CoffeeCupWaste" parent="." instance=ExtResource("10_xsxb7")]
-position = Vector2(427, 170)
-clutter_type = 1
-
 [node name="Trash Can" parent="." instance=ExtResource("11_rvibk")]
-position = Vector2(604, 287)
+position = Vector2(614, 288)
 
 [node name="CoffeeCupKeep" parent="." instance=ExtResource("10_xsxb7")]
 position = Vector2(207, 219)
@@ -440,6 +194,7 @@ position = Vector2(207, 219)
 position = Vector2(295, 175)
 
 [node name="UnRedacter" parent="." instance=ExtResource("13_jqe1d")]
+z_index = -1
 position = Vector2(101, 184)
 day = 1
 
@@ -466,8 +221,17 @@ position = Vector2(513, 183)
 [node name="Marker2D5" type="Marker2D" parent="PlantSpawn/SpawnLocations"]
 position = Vector2(291, 249)
 
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+
+[node name="DirectionsSplash" parent="." instance=ExtResource("15_mni4q")]
+visible = false
+
+[node name="CoffeeCup" parent="." instance=ExtResource("16_jni6d")]
+position = Vector2(420, 170)
+
 [connection signal="mouse_entered" from="Directions" to="." method="_on_directions_mouse_entered"]
 [connection signal="mouse_exited" from="Directions" to="." method="_on_directions_mouse_exited"]
 [connection signal="pressed" from="Directions" to="." method="_on_directions_pressed"]
-[connection signal="pressed" from="DirectionsSplash/Button" to="." method="_on_directions_closed"]
 [connection signal="timeout" from="PlantSpawn/Timer" to="PlantSpawn" method="_on_timer_timeout"]
+[connection signal="button_pressed" from="DirectionsSplash" to="." method="_on_directions_closed"]

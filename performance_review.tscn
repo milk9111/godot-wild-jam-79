@@ -1,10 +1,96 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqx5ghissvd6t"]
+[gd_scene load_steps=8 format=3 uid="uid://cqx5ghissvd6t"]
 
 [ext_resource type="Script" uid="uid://b1x0jjhouap40" path="res://performance_review.gd" id="1_o2xtu"]
 [ext_resource type="Texture2D" uid="uid://cbyqb2l2d2vom" path="res://Assets/Art/KPI Corp.png" id="2_ouuua"]
+[ext_resource type="AudioStream" uid="uid://b3m8eaauj8j2o" path="res://Assets/Sound/UnpaidIntern_SFX_Print.ogg" id="3_4he6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdk4w"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_qlmab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReviewSheet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(178, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ReviewSheet:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xotqt"]
+resource_name = "print_report"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ReviewSheet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.833333, 1.1, 1.76667, 2.06667, 2.7, 2.96667, 3.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(178, -350), Vector2(178, -350), Vector2(178, -250), Vector2(178, -250), Vector2(178, -150), Vector2(178, -150), Vector2(178, -50), Vector2(178, -50), Vector2(178, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ReviewSheet:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ea6y5"]
+_data = {
+&"RESET": SubResource("Animation_qlmab"),
+&"print_report": SubResource("Animation_xotqt")
+}
 
 [node name="PerformanceReview" type="CanvasLayer"]
 script = ExtResource("1_o2xtu")
@@ -18,10 +104,11 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tdk4w")
 
 [node name="ReviewSheet" type="ColorRect" parent="."]
+visible = false
 offset_left = 178.0
-offset_top = 22.0
+offset_top = 10.0
 offset_right = 467.0
-offset_bottom = 364.0
+offset_bottom = 352.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ReviewSheet"]
 layout_mode = 1
@@ -137,10 +224,20 @@ shortcut_keys_enabled = false
 
 [node name="AcceptButton" type="Button" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 513.0
 offset_top = 315.0
 offset_right = 561.0
 offset_bottom = 334.0
 text = "Accept"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ea6y5")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4he6r")
+volume_db = 18.0
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]

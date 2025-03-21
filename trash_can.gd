@@ -28,10 +28,9 @@ func _on_area_entered(area):
 	elif area.is_in_group("Clutter"):
 		var parent = area.get_parent()
 		if parent.clutter_type == parent.ClutterType.WASTE:
-			_success_placement()
 			print("throwing away correct coffee cup")
+			EventBus.succeeded_placement.emit()
 			EventBus.bonus_objective.emit("Correct coffee cup thrown away")
-			parent.queue_free()
 		else:
 			_failure_placement("Incorrect object discarded")
 			parent.queue_free()

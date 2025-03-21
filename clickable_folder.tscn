@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcwxsags4f3uj"]
+[gd_scene load_steps=12 format=3 uid="uid://dcwxsags4f3uj"]
 
 [ext_resource type="Script" uid="uid://cbsecua3t4mr2" path="res://clickable_object.gd" id="1_2eoxa"]
 [ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="2_idgio"]
 [ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="2_iqdx2"]
+[ext_resource type="FontFile" uid="uid://dye0q3v5hkk8u" path="res://Resources/ConnectionII.otf" id="4_iqdx2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7p10"]
 atlas = ExtResource("2_iqdx2")
@@ -60,13 +61,16 @@ collision_mask = 2
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_idgio")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -30.0
-offset_top = -21.0
-offset_right = 19.0
-offset_bottom = 28.0
-text = "
-"
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = -44.0
+offset_top = -16.0
+offset_right = 312.0
+offset_bottom = 144.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_iqdx2")
+theme_override_font_sizes/normal_font_size = 60
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 pitch_scale = 1.1
