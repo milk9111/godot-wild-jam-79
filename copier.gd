@@ -40,6 +40,9 @@ func _on_area_exited(area):
 
 
 func _on_scan_complete_timeout():
+	if currently_processing_node == null:
+		return 
+	
 	print("reenabling redacted node")
 	if currently_processing_node.redacted == true:
 		currently_processing_node.redacted = false

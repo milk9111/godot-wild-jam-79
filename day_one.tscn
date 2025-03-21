@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="6_n4m20"]
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="6_ygvcp"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="7_mg7ih"]
-[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="9_8jtnn"]
+[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="9_8jtnn"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="9_256nn"]
-[ext_resource type="PackedScene" uid="uid://bv8hjbpyg2wb3" path="res://directions.tscn" id="9_rm208"]
+[ext_resource type="PackedScene" path="res://directions.tscn" id="9_rm208"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_urjdr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
