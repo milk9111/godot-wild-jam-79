@@ -31,6 +31,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://cg8x2s1aehos5"
 
 [global_group]
 
