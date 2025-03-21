@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_4e7rn"]
 [ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_6qglx"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="10_nipeb"]
-[ext_resource type="PackedScene" path="res://directions.tscn" id="11_nipeb"]
+[ext_resource type="PackedScene" uid="uid://bv8hjbpyg2wb3" path="res://directions.tscn" id="11_nipeb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_nipeb")

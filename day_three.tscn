@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_i172m"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="12_tttgc"]
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="13_bb2aa"]
-[ext_resource type="PackedScene" path="res://directions.tscn" id="13_tttgc"]
-[ext_resource type="PackedScene" path="res://coffeecup_waste.tscn" id="14_bb2aa"]
+[ext_resource type="PackedScene" uid="uid://bv8hjbpyg2wb3" path="res://directions.tscn" id="13_tttgc"]
+[ext_resource type="PackedScene" uid="uid://boj2orqo4rpj8" path="res://coffeecup_waste.tscn" id="14_bb2aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_i172m")

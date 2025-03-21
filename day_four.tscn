@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_bv5kx"]
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_cvihg"]
 [ext_resource type="PackedScene" uid="uid://b8tbjg5xxsmnt" path="res://un_redacter.tscn" id="13_8mlwe"]
-[ext_resource type="PackedScene" path="res://directions.tscn" id="14_2va7f"]
-[ext_resource type="PackedScene" path="res://coffeecup_waste.tscn" id="15_bv5kx"]
+[ext_resource type="PackedScene" uid="uid://bv8hjbpyg2wb3" path="res://directions.tscn" id="14_2va7f"]
+[ext_resource type="PackedScene" uid="uid://boj2orqo4rpj8" path="res://coffeecup_waste.tscn" id="15_bv5kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urjdr"]
 atlas = ExtResource("3_2va7f")
