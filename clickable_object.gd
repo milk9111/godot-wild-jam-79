@@ -3,10 +3,10 @@ class_name ClickableObject
 
 
 const CLICK_THRESHOLD: float = 60.0
-const LERP_THRESHOLD: float = 30.0
+const LERP_THRESHOLD: float = 5.0
 const SPEED: float = .05
 const ACCELERATION:float = 700.0
-const MOVE_SPEED: float = 700.0
+const MOVE_SPEED: float = 30000.0
 const SMOOTHING_FACTOR:float = 1
 enum State {SPAWNED,CLICKED,DROPPED,STACKED,QUEUED}
 enum Colors {BLUE,RED,YELLOW}
@@ -23,6 +23,7 @@ var color: Colors:
 		color = new_color
 	get():
 		return color
+
 @onready var sfx = $SFX
 @onready var detect_area = $DetectArea
 @onready var sprite_2d = $Sprite2D
@@ -31,6 +32,7 @@ var color: Colors:
 @export var blue_texture:AtlasTexture
 @export var red_texture:AtlasTexture
 @export var yellow_texture:AtlasTexture
+
 var name_strings: Array = ["Mark S.","Barbara H.","Mike W.","Gustav P."]
 var select_sfx: AudioStreamRandomizer = load("res://Resources/select_sfx.tres")
 var drop_sfx: AudioStreamRandomizer = load("res://Resources/drop_sfx.tres")
@@ -60,27 +62,30 @@ var text:String:
 var day:Day:
 	set(new_day):
 		match(new_day):
-			0:
+			DayLevel.Day.ONE:
 				pass
-			1: 
+			DayLevel.Day.TWO: 
 				text = name_strings.pick_random()
-			2:
+			DayLevel.Day.THREE:
 				text = name_strings.pick_random()
-			3:
+			DayLevel.Day.FOUR:
 				text = name_strings.pick_random()
-			4:
+			DayLevel.Day.FIVE:
 				text = name_strings.pick_random()
 			
 		day = new_day
 	get():
 		return day
+
+
 func _ready():
 	color = rng.randi_range(0, 2)
 	$Sprite2D.material.set("shader_parameter/thickness",0.0)
+
+
 func _physics_process(delta):
-	
 	match state:
-		0:
+		State.SPAWNED:
 			is_held = false
 			set_shader()
 			target_pos = get_global_mouse_position() 
@@ -88,7 +93,7 @@ func _physics_process(delta):
 				if global_position.distance_to(target_pos) < CLICK_THRESHOLD:
 					state = State.CLICKED
 			
-		1:	
+		State.CLICKED:
 			is_held = true
 			z_index = 1
 			target_pos = get_global_mouse_position() 
@@ -97,7 +102,7 @@ func _physics_process(delta):
 				state = State.DROPPED
 			move(delta)
 		
-		2:
+		State.DROPPED:
 			is_held = false
 			if Input.is_action_just_pressed("select"):
 				target_pos = get_global_mouse_position() 
@@ -105,41 +110,39 @@ func _physics_process(delta):
 					state = State.CLICKED
 			target_pos = final_pos
 			set_shader()
-			#move(delta)
-		3:
+
+		State.STACKED:
 			is_held = false
 			z_index = 0
 			detect_area.monitorable = false
 			set_shader()
-		4:
+		
+		State.QUEUED:
 			$Sprite2D.material.set("shader_parameter/thickness",0.0)
 			
 
 func set_shader():
 	if state == State.SPAWNED or state == State.DROPPED:
 		if global_position.distance_to(get_viewport().get_mouse_position()) < CLICK_THRESHOLD:
-			$Sprite2D.material.set("shader_parameter/thickness",3.0)
+			$Sprite2D.material.set("shader_parameter/thickness",2.0)
+			$Sprite2D.material.set("shader_parameter/clr", Color.LIGHT_STEEL_BLUE)
 		else:
-			$Sprite2D.material.set("shader_parameter/thickness",0.0)
+			$Sprite2D.material.set("shader_parameter/thickness",2.0)
+			$Sprite2D.material.set("shader_parameter/clr", Color.WHITE)
 	else:
 		$Sprite2D.material.set("shader_parameter/thickness",0.0)
-	
+
+
 func move(delta):
-	var mouse_position = get_viewport().get_mouse_position()
-	var direction = (mouse_position - global_position).normalized()
+	var distance = target_pos - global_position
+	if distance.length() < LERP_THRESHOLD:
+		velocity = Vector2.ZERO
+	else:
+		var direction = distance.normalized()
+		velocity = direction * MOVE_SPEED * delta
 	
-	velocity += direction * ACCELERATION
-	
-	if velocity.length() > MOVE_SPEED:
-		velocity = velocity.normalized() * MOVE_SPEED
-		
-	if (mouse_position - global_position).length() < LERP_THRESHOLD and (mouse_position - global_position).length() >= 10:
-			#velocity = Vector2.ZERO
-			velocity = lerp(velocity, Vector2.ZERO, SMOOTHING_FACTOR)
-	if (mouse_position - global_position).length() < 10:
-			velocity = Vector2.ZERO
-			#velocity = lerp(velocity, Vector2.ZERO, SMOOTHING_FACTOR)
 	move_and_slide()
+
 
 func _input(event):
 	if state == State.SPAWNED or state == State.DROPPED:
@@ -148,20 +151,7 @@ func _input(event):
 			if event.is_action_pressed("select"):
 				sfx.stream = select_sfx
 				sfx.play()
-	#if state == State.CLICKED:
-		#
-		#if event.is_action_pressed("select"):
-			#sfx.stream = drop_sfx
-			#sfx.play()
-		
+
+
 func _on_detect_area_area_entered(area):
 	pass
-	#if is_held == false:
-		#if area.is_in_group("Stack"):
-				#var new_parent = area.get_child(2)
-				#state = State.STACKED
-				#call_deferred("set_process_mode",ProcessMode.PROCESS_MODE_DISABLED)
-				#call_deferred("reparent",new_parent)
-				#global_position = new_parent.global_position
-
-	
