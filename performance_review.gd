@@ -68,9 +68,9 @@ I trust you’ll take the necessary steps to ensure this doesn’t repeat in you
 			
 	var score_text = ""
 	if cumulative_failure_count > 20 || cumulative_success < 50:
-		score_text = "that you will never step foot in a KPI corp facility ever again! You were a truly an exceptionally terrible intern, the likes of which we may never witness in the future. We are hereby disbanding the internship/job exposure exchange program in favor of procuring a fully automated robot who will undoubtedly adhere to KPI Corp core values."
+		score_text = "that you will never step foot in a KPI Corp. facility ever again! You were truly an exceptionally terrible intern, the likes of which we may never witness again. So awful in fact, that we are hereby disbanding the internship/job exposure exchange program in favor of procuring a fully automated robot who will undoubtedly adhere to KPI Corp. core values."
 	elif cumulative_success > 75 && cumulative_success < 100:
-		score_text = "that your internship has come to a fruitful close. We are certain you will certainly be an employee of another company."
+		score_text = "that your internship has come to a fruitful close. We are certain you will be an exemplary employee for a different organization."
 	else:
 		score_text = "our extension of a job offer of Junior Associate Data Analyst Level I! Please report to our underground sorting facility at 6am sharp on Monday morning."
 	
@@ -94,7 +94,7 @@ Thank you,
 
 Bob Thompson
 President and CEO
-	""" % [cumulative_success + cumulative_failure_count, cumulative_success, cumulative_failure_count, cumulative_failures, score_text])
+	""" % [cumulative_success + cumulative_failure_count, cumulative_success, cumulative_failure_count, failure_text, score_text])
 
 func _day_four(success_count, failed_count, failures):
 	var failure_text = ""
