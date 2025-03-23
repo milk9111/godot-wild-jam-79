@@ -11,7 +11,7 @@ class_name DayLevel
 @onready var directions = $Directions
 
 
-
+@export var unredactor_node:Node2D
 
 var notepad_down = load("res://Assets/Sound/UnpaidIntern_SFX_NotepadDown.ogg")
 var notepad_up = load("res://Assets/Sound/UnpaidIntern_SFX_NotepadUp.ogg")
@@ -24,7 +24,7 @@ func _ready():
 	directions_splash.fade_in_finished.connect(_on_fade_in_finished)
 	directions_splash.fade_out_finished.connect(_on_fade_out_finished)
 func _on_started_day():
-	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
+	#active_folder.process_mode = Node.PROCESS_MODE_DISABLED
 	directions_splash.show()
 	get_tree().paused = true
 
@@ -36,7 +36,7 @@ func _on_directions_pressed():
 	directions_splash.fade_in()
 	await directions_splash.fade_in_finished
 	get_tree().paused = true
-	active_folder.process_mode = Node.PROCESS_MODE_DISABLED
+	#active_folder.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func _on_directions_closed():
@@ -44,11 +44,9 @@ func _on_directions_closed():
 	
 	directions_splash.fade_out()
 	await directions_splash.fade_out_finished
-	
 	get_tree().paused = false
 	active_folder.process_mode = Node.PROCESS_MODE_INHERIT
 	directions_splash.hide()
-	
 
 func _on_directions_mouse_entered():
 	directions.material.set("shader_parameter/thickness",10.0)

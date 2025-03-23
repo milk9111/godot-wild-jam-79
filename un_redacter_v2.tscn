@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bivno0rg3lhkt"]
+
+[ext_resource type="Script" uid="uid://cn3g1h1ar8t4y" path="res://unredactor_v2.gd" id="1_yuahp"]
+[ext_resource type="Texture2D" uid="uid://c36ok8571lhyy" path="res://Assets/Art/Extra_Sprites2x.png" id="2_v2q1u"]
+[ext_resource type="PackedScene" uid="uid://lh8l74enboib" path="res://Explosion_particles.tscn" id="3_5etca"]
+[ext_resource type="AudioStream" uid="uid://veaqssu5qrcu" path="res://Assets/Sound/FNF_WW_foley_potions_conjure_exploding_small_poof.wav" id="4_u74xk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x256"]
+atlas = ExtResource("2_v2q1u")
+region = Rect2(406, 76, 136, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv5kx"]
+size = Vector2(62, 69)
+
+[node name="UnRedacter" type="Area2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_yuahp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_6x256")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_bv5kx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -22.0
+offset_right = 10.0
+offset_bottom = 27.0
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("3_5etca")]
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_u74xk")
+volume_db = -5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

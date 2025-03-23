@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://43bxp4m5qat" path="res://Assets/Sound/UnpaidIntern_RoomTone_SFX.ogg" id="4_tttgc"]
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_bb2aa"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_xwmoq"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_wsoa6"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_wsoa6"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_jw4i4"]
 [ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_5h76s"]
 [ext_resource type="PackedScene" uid="uid://c6pdu4ncf0grf" path="res://plant.tscn" id="12_i172m"]

@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_5nne4"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="6_8mlwe"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_6k7nd"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_tpj18"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_tpj18"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_mpgkk"]
 [ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_35vkj"]
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_bv5kx"]
@@ -50,9 +50,10 @@ shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
 
-[node name="Day Four" type="Node2D"]
+[node name="Day Four" type="Node2D" node_paths=PackedStringArray("unredactor_node")]
 process_mode = 1
 script = ExtResource("1_gnf7h")
+unredactor_node = NodePath("UnRedacter")
 day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]

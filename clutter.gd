@@ -58,6 +58,9 @@ func _on_detect_area_area_entered(area):
 		await animation_player.animation_finished
 		queue_free()
 	if area.is_in_group("Trash"):
-		animation_player.play("Trash")
+		if animation_player.has_animation("Trash"):
+			animation_player.play("Trash")
+		else:
+			animation_player.play("TableRight")
 		await animation_player.animation_finished
 		queue_free()

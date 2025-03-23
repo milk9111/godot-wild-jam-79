@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b8ucflspdavth" path="res://Assets/Sound/UnpaidIntern_Music.ogg" id="5_pfayw"]
 [ext_resource type="PackedScene" uid="uid://b4v6x0v68yymw" path="res://spawn_manager.tscn" id="6_hgjqq"]
 [ext_resource type="Texture2D" uid="uid://p7b3rtttf3of" path="res://Assets/Art/Desk_Background.png" id="7_77imq"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="8_10c04"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="8_10c04"]
 [ext_resource type="Texture2D" uid="uid://cdh11f0tu3plf" path="res://notepad_table_texture.tres" id="9_5cyvn"]
 [ext_resource type="PackedScene" uid="uid://bmtso2h4ovqqn" path="res://coffeecup.tscn" id="10_xsxb7"]
 [ext_resource type="PackedScene" uid="uid://c1v4xduq1sgts" path="res://trash_can.tscn" id="11_rvibk"]
@@ -51,9 +51,10 @@ shader_parameter/clr = Color(1, 1, 1, 1)
 shader_parameter/type = 1
 shader_parameter/thickness = 0.0
 
-[node name="Day Five" type="Node2D"]
+[node name="Day Five" type="Node2D" node_paths=PackedStringArray("unredactor_node")]
 process_mode = 1
 script = ExtResource("1_iwq5h")
+unredactor_node = NodePath("UnRedacter")
 day = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -207,13 +208,13 @@ wait_time = 10.0
 [node name="SpawnLocations" type="Node2D" parent="PlantSpawn"]
 
 [node name="Marker2D" type="Marker2D" parent="PlantSpawn/SpawnLocations"]
-position = Vector2(186, 151)
+position = Vector2(438, 255)
 
 [node name="Marker2D2" type="Marker2D" parent="PlantSpawn/SpawnLocations"]
 position = Vector2(126, 254)
 
 [node name="Marker2D3" type="Marker2D" parent="PlantSpawn/SpawnLocations"]
-position = Vector2(433, 260)
+position = Vector2(193, 155)
 
 [node name="Marker2D4" type="Marker2D" parent="PlantSpawn/SpawnLocations"]
 position = Vector2(513, 183)

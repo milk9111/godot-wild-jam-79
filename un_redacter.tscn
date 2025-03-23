@@ -33,15 +33,24 @@ offset_bottom = 27.0
 autowrap_mode = 2
 
 [node name="ScanComplete" type="Timer" parent="."]
+process_callback = 0
 wait_time = 2.0
+one_shot = true
 
 [node name="ScanDanger" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
 
 [node name="ScanDestroyed" type="Timer" parent="."]
+process_callback = 0
 wait_time = 5.0
+one_shot = true
 
 [node name="CheckArea" type="Timer" parent="."]
+process_mode = 3
+process_callback = 0
 wait_time = 0.2
+autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

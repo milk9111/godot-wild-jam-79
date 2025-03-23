@@ -7,7 +7,9 @@ signal accepted_review
 @onready var accept_button = %AcceptButton
 @onready var review_sheet = $ReviewSheet
 @onready var title = %Title
-
+var cumulative_success:int = 0
+var cumulative_failure_count:int = 0
+var cumulative_failures:PackedStringArray
 
 func _ready():
 	visible = false
@@ -18,6 +20,8 @@ func _on_accept_button_pressed():
 
 
 func show_report(day, success_count, failed_count, failures, bonus):
+	cumulative_success+=success_count
+	cumulative_failure_count+=failed_count
 	title.text = "PERFORMANCE REVIEW (DAY %d)" % [day+1]
 	var distinct_failures = {}
 	for failure in failures:
@@ -26,7 +30,7 @@ func show_report(day, success_count, failed_count, failures, bonus):
 	failures = []
 	for k in distinct_failures:
 		failures.append(k)
-	
+		cumulative_failures.append(k)
 	visible = true
 	#visibility of ReviewSheet handled by animation player 
 	animation_player.play("print_report")
@@ -40,12 +44,57 @@ func show_report(day, success_count, failed_count, failures, bonus):
 			_day_three(success_count, failed_count, failures)
 		DayLevel.Day.FOUR:
 			_day_four(success_count, failed_count, failures)
-		#DayLevel.Day.FIVE:
-			#_day_five(success_count, failed_count, failures)
+		DayLevel.Day.FIVE:
+			_day_five(cumulative_success,cumulative_failure_count,cumulative_failures)
 	
 	await animation_player.animation_finished
 	accept_button.show()
 
+func _day_five(cumulative_success,cumulative_failure_count,cumulative_failures):
+	var failure_text = ""
+	if cumulative_failures.size() > 0:
+		
+		failure_text = """
+
+We always strive to be better at KPI Corp, so in your journey of self betterment here are all the ways in which you did not follow our written processes:
+
+[ul]
+%s
+[/ul]
+
+I trust you’ll take the necessary steps to ensure this doesn’t repeat in your future endeavors.
+
+	""" % "\n".join(cumulative_failures)
+			
+	var score_text = ""
+	if cumulative_failure_count > 20 || cumulative_success < 50:
+		score_text = "that you will never step foot in a KPI corp facility ever again! You were a truly an exceptionally terrible intern, the likes of which we may never witness. We are hereby disbanding the internship/job exposure exchange program in favor of procuring a fully automated robot who undoubtedly adhere to KPI Corp core values."
+	elif cumulative_success > 75 && cumulative_success < 100:
+		score_text = "that your internship has come to a fruitful close. We are certain you will certainly be an employee of another company."
+	else:
+		score_text = "our extension of a job offer of Junior Associate Data Analyst Level I! Please report to our underground sorting facility at 6am sharp on Monday morning."
+	
+	review_text.parse_bbcode("""
+Date: 02/23/1999
+To: Intern
+From: Bob Thompson, President and CEO
+Subject: Internship Performance Evaluation
+
+Thank you for your participation in our internship/job exposure exchange program! We recieved your labor in exchange for professional workplace exposure. Truly an invaluable gift! 
+
+[ul]
+ Total tasks assigned: %d
+ Total completed tasks: %d
+ Total growth opportunities: %d
+[/ul]
+%s
+Based on your performance this week, we are excited to announce %s
+
+Thank you,
+
+Bob Thompson
+President and CEO
+	""" % [cumulative_success + cumulative_failure_count, cumulative_success, cumulative_failure_count, cumulative_failures, score_text])
 
 func _day_four(success_count, failed_count, failures):
 	var failure_text = ""
@@ -73,7 +122,7 @@ I trust you’ll take the necessary steps to ensure this doesn’t repeat.
 	
 	review_text.parse_bbcode("""
 Date: 02/22/1999
-To: Whom it may concern
+To: Intern
 From: Bob Thompson, Senior Regional Vice President
 Subject: Internship Performance Evaluation
 
@@ -120,7 +169,7 @@ Let’s take this as a learning moment and move forward with more precision, mka
 	
 	review_text.parse_bbcode("""
 Date: 02/21/1999
-To: Whom it may concern
+To: Intern
 From: Bob Thompson, Branch Director
 Subject: Internship Performance Evaluation
 
@@ -168,7 +217,7 @@ I appreciate your effort, but let’s align on how to avoid this in the future.
 	
 	review_text.parse_bbcode("""
 Date: 02/20/1999
-To: Whom it may concern
+To: Intern
 From: Bob Thompson, Office Manager
 Subject: Internship Performance Evaluation
 
@@ -215,7 +264,7 @@ We believe that everyone here at KPI is capable of world-class excellence. This 
 	
 	review_text.parse_bbcode("""
 Date: 02/19/1999
-To: Whom it may concern
+To: Intern
 From: Bob Thompson, Floor Supervisor
 Subject: Internship Performance Evaluation
 
