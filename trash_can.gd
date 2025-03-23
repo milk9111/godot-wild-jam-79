@@ -45,7 +45,7 @@ func _on_area_exited(area):
 func check_area():
 	var overlapping_areas = self.get_overlapping_areas()
 	for area in overlapping_areas:
-		if area.get_parent().is_held or not area.is_in_group("Item") or area in areas_already_entered:
+		if not area.is_in_group("Item") or area.get_parent().is_held or area in areas_already_entered:
 			continue 
 		
 		areas_already_entered.append(area)

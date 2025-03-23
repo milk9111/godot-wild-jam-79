@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcwxsags4f3uj"]
 
 [ext_resource type="Script" uid="uid://cbsecua3t4mr2" path="res://clickable_object.gd" id="1_2eoxa"]
-[ext_resource type="Shader" path="res://clickable_folder.gdshader" id="2_idgio"]
+[ext_resource type="Shader" uid="uid://cbwjuvwnrw0x" path="res://clickable_folder.gdshader" id="2_idgio"]
 [ext_resource type="Texture2D" uid="uid://b5b84qpnj6f6h" path="res://Assets/Art/Assets_Sprite_Sheet_v1.png" id="2_iqdx2"]
 [ext_resource type="FontFile" uid="uid://dye0q3v5hkk8u" path="res://Resources/ConnectionII.otf" id="4_iqdx2"]
 

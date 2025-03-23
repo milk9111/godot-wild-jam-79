@@ -189,7 +189,7 @@ position = Vector2(615, 289)
 position = Vector2(421, 169)
 
 [node name="UnRedacter" parent="." instance=ExtResource("13_8mlwe")]
-position = Vector2(101, 181)
+position = Vector2(99, 201)
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

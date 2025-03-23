@@ -196,7 +196,7 @@ position = Vector2(295, 175)
 
 [node name="UnRedacter" parent="." instance=ExtResource("13_jqe1d")]
 z_index = -1
-position = Vector2(101, 184)
+position = Vector2(98, 200)
 day = 1
 
 [node name="PlantSpawn" type="Node2D" parent="."]

@@ -9,7 +9,7 @@ signal accepted_review
 @onready var title = %Title
 var cumulative_success:int = 0
 var cumulative_failure_count:int = 0
-var cumulative_failures:PackedStringArray
+var cumulative_failures:PackedStringArray 
 
 func _ready():
 	visible = false
@@ -68,7 +68,7 @@ I trust you’ll take the necessary steps to ensure this doesn’t repeat in you
 			
 	var score_text = ""
 	if cumulative_failure_count > 20 || cumulative_success < 50:
-		score_text = "that you will never step foot in a KPI corp facility ever again! You were a truly an exceptionally terrible intern, the likes of which we may never witness. We are hereby disbanding the internship/job exposure exchange program in favor of procuring a fully automated robot who undoubtedly adhere to KPI Corp core values."
+		score_text = "that you will never step foot in a KPI corp facility ever again! You were a truly an exceptionally terrible intern, the likes of which we may never witness in the future. We are hereby disbanding the internship/job exposure exchange program in favor of procuring a fully automated robot who will undoubtedly adhere to KPI Corp core values."
 	elif cumulative_success > 75 && cumulative_success < 100:
 		score_text = "that your internship has come to a fruitful close. We are certain you will certainly be an employee of another company."
 	else:
@@ -80,7 +80,7 @@ To: Intern
 From: Bob Thompson, President and CEO
 Subject: Internship Performance Evaluation
 
-Thank you for your participation in our internship/job exposure exchange program! We recieved your labor in exchange for professional workplace exposure. Truly an invaluable gift! 
+Thank you for your participation in our internship/job exposure exchange program! We received your labor in exchange for professional workplace exposure. This is truly an invaluable gift.
 
 [ul]
  Total tasks assigned: %d

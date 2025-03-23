@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c36ok8571lhyy" path="res://Assets/Art/Extra_Sprites2x.png" id="2_alpy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71txy"]
-size = Vector2(63, 103)
+size = Vector2(63, 107.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wr0p8"]
 atlas = ExtResource("2_alpy1")
@@ -25,7 +25,7 @@ script = ExtResource("1_bgvmr")
 day = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Trash"]]
-position = Vector2(-4, -15)
+position = Vector2(-4, -17.25)
 shape = SubResource("RectangleShape2D_71txy")
 
 [node name="Sprite" type="Sprite2D" parent="."]

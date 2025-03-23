@@ -31,14 +31,19 @@ func start(day:int):
 	match (day):
 		0:
 			timer.wait_time = 45.0
+			#timer.wait_time = 5
 		1:
 			timer.wait_time = 60.0
+			#timer.wait_time = 5
 		2:
 			timer.wait_time = 75.0
+			#timer.wait_time = 5
 		3:
 			timer.wait_time = 90.0
+			#timer.wait_time = 5
 		4: 
 			timer.wait_time = 105.0
+			#timer.wait_time = 5
 	timer.start()
 	initialize()
 	
